@@ -17,10 +17,15 @@ class lockbox {
     var password : String
     
     init ( name: String, account: String, password : String ){
-        self.icon = nil
         self.name = name
         self.account = account
         self.password = password
     }
     
+    func updateInfoWith (image : UIImage?, newName name : String?, newAccount account : String, newPassword password : String) {
+        self.icon = image
+        self.name = name
+        self.account = account
+        self.password = password
+    }
 }

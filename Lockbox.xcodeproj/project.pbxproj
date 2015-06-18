@@ -59,10 +59,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D97AC6D31B3238190081A120 /* LockboxTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = LockboxTests;
+			sourceTree = "<group>";
+		};
 		D9BCACE71B3108AB001324B8 = {
 			isa = PBXGroup;
 			children = (
 				D9BCACF21B3108AB001324B8 /* Lockbox */,
+				D97AC6D31B3238190081A120 /* LockboxTests */,
 				D9BCACF11B3108AB001324B8 /* Products */,
 			);
 			sourceTree = "<group>";

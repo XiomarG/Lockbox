@@ -56,6 +56,7 @@
         <!--Lockbox Detail View Controller-->
         <scene sceneID="LgS-Dp-Vy7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FV7-xG-CWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="xoF-CS-zTB" customClass="LockboxDetailViewController" customModule="Lockbox" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Ht-iJ-bjs"/>
@@ -109,13 +110,18 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="3ws-se-jM7"/>
+                    <navigationItem key="navigationItem" id="3ws-se-jM7">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="p63-FU-vjx">
+                            <connections>
+                                <action selector="saveLockboxInfo:" destination="xoF-CS-zTB" id="T6v-UV-XAs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="accountInfo" destination="ydd-L8-MUd" id="DWX-5Y-9s1"/>
                         <outlet property="passwordInfo" destination="GXs-8B-veq" id="aJK-SD-Xda"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FV7-xG-CWL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2010" y="385"/>
         </scene>
