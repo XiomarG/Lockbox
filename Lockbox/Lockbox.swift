@@ -9,23 +9,30 @@
 import Foundation
 import UIKit
 
-class lockbox {
+struct Account {
+    var name : String
+    var password : String
+}
+
+class Lockbox {
     
     var icon : UIImage?
     var name : String?
-    var account : String
-    var password : String
     
-    init ( name: String, account: String, password : String ){
-        self.name = name
-        self.account = account
-        self.password = password
+    
+    var accounts = [Account]()
+    
+    init ( accountName: String, password : String ){
+        self.accounts.append(Account(name: accountName,password: password))
     }
     
+    init ( newAccounts : [Account]) {
+        self.accounts = newAccounts
+    }
+    /*
     func updateInfoWith (image : UIImage?, newName name : String?, newAccount account : String, newPassword password : String) {
         self.icon = image
         self.name = name
-        self.account = account
-        self.password = password
-    }
+        self.accounts = 
+    }*/
 }

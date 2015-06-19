@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D97AC6D51B325CD30081A120 /* boxInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AC6D41B325CD30081A120 /* boxInfoTableViewController.swift */; };
+		D97AC6D71B325D2D0081A120 /* boxInfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AC6D61B325D2D0081A120 /* boxInfoViewCell.swift */; };
 		D98187691B311F9C001C7C49 /* LockboxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98187681B311F9C001C7C49 /* LockboxDetailViewController.swift */; };
 		D9BCACF61B3108AB001324B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BCACF51B3108AB001324B8 /* AppDelegate.swift */; };
 		D9BCACFB1B3108AB001324B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9BCACF91B3108AB001324B8 /* Main.storyboard */; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D97AC6D41B325CD30081A120 /* boxInfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = boxInfoTableViewController.swift; sourceTree = "<group>"; };
+		D97AC6D61B325D2D0081A120 /* boxInfoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = boxInfoViewCell.swift; sourceTree = "<group>"; };
 		D98187681B311F9C001C7C49 /* LockboxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockboxDetailViewController.swift; sourceTree = "<group>"; };
 		D9BCACF01B3108AB001324B8 /* Lockbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9BCACF41B3108AB001324B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,9 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				D9BCAD151B310974001324B8 /* LockboxViewController.swift */,
+				D97AC6D61B325D2D0081A120 /* boxInfoViewCell.swift */,
 				D9BCAD191B310ACC001324B8 /* LockboxViewCell.swift */,
 				D9BCAD171B310992001324B8 /* Lockbox.swift */,
 				D98187681B311F9C001C7C49 /* LockboxDetailViewController.swift */,
+				D97AC6D41B325CD30081A120 /* boxInfoTableViewController.swift */,
 				D9BCACF91B3108AB001324B8 /* Main.storyboard */,
 				D9BCACF31B3108AB001324B8 /* Supporting Files */,
 			);
@@ -208,7 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D97AC6D51B325CD30081A120 /* boxInfoTableViewController.swift in Sources */,
 				D9BCACF61B3108AB001324B8 /* AppDelegate.swift in Sources */,
+				D97AC6D71B325D2D0081A120 /* boxInfoViewCell.swift in Sources */,
 				D9BCAD1A1B310ACC001324B8 /* LockboxViewCell.swift in Sources */,
 				D98187691B311F9C001C7C49 /* LockboxDetailViewController.swift in Sources */,
 				D9BCAD181B310992001324B8 /* Lockbox.swift in Sources */,

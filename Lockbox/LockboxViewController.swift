@@ -12,7 +12,7 @@ let reuseIdentifier = "Cell"
 
 class LockboxViewController: UICollectionViewController {
     
-    var boxes = [lockbox]()
+    var boxes = [Lockbox]()
     var selectedBoxIndex : Int = 0
     
     private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
@@ -25,23 +25,33 @@ class LockboxViewController: UICollectionViewController {
     }
     
     private func addEmptyBox() {
-        boxes.append(lockbox(name: "", account: "", password: ""))
+        boxes.append(Lockbox(accountName: "", password: ""))
     }
     
     private func initializeTestData() {
-        boxes.append(lockbox(name: "fb", account: "111", password: "bbb"))
-        boxes.append(lockbox(name: "fb", account: "222", password: "bbb"))
-        boxes.append(lockbox(name: "fb", account: "333", password: "bbb"))
+        boxes.append(Lockbox(accountName: "111", password: "bbb"))
+        boxes.append(Lockbox(accountName: "222", password: "bbb"))
+        boxes.append(Lockbox(accountName: "333", password: "bbb"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "show detail" {
-            if let sdvc = segue.destinationViewController as? LockboxDetailViewController {
+            if let sdvc = segue.destinationViewController as? boxInfoTableViewController {
                 sdvc.delegate = self
-                sdvc.currentAccount = boxes[selectedBoxIndex].account
-                sdvc.currentPassword = boxes[selectedBoxIndex].password
-                if selectedBoxIndex == boxes.count {
+
+                sdvc.accounts = boxes[selectedBoxIndex].accounts
+                if selectedBoxIndex == boxes.count - 1 {
                     sdvc.isNew = true
                 }
             }
@@ -74,12 +84,6 @@ class LockboxViewController: UICollectionViewController {
         } else {
             cell.backgroundColor = UIColor.redColor()
         }
-        print(indexPath.row)
-    
-        // Configure the cell
-        print(boxes.count)
-        
-    
         return cell
     }
 }
@@ -90,13 +94,14 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension LockboxViewController : DetailViewControllerDelegate {
-    func ldvcDidFinish(controller: LockboxDetailViewController, newImage: UIImage?, newName: String?, newAccount: String?, newPassword: String?, checkNew : Bool) {
-        if checkNew {
-            boxes.append(lockbox(name: newName!, account: newAccount!, password: newPassword!))
-        } else {
-            boxes[selectedBoxIndex].updateInfoWith(nil, newName: newName, newAccount: newAccount!, newPassword: newPassword!)
-            addEmptyBox()
+extension LockboxViewController : BoxInfoTableViewControllerDelegate {
+    func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], checkNew: Bool) {
+        if checkNew == false {
+            boxes[selectedBoxIndex].accounts = newAccounts
+        } else
+        {
+            boxes.insert(Lockbox(newAccounts: newAccounts), atIndex: boxes.count-1)
+            //addEmptyBox()
             collectionView?.reloadData()
         }
         controller.navigationController?.popViewControllerAnimated(true)
