@@ -8,7 +8,7 @@
 
 import UIKit
 
-class boxInfoViewCell: UITableViewCell {
+class boxInfoViewCell: UITableViewCell, UITextFieldDelegate {
 
     
     var detailInfo : Account?
@@ -19,7 +19,14 @@ class boxInfoViewCell: UITableViewCell {
     override func awakeFromNib() {
         accountInfo.text = detailInfo?.name
         passwordInfo.text = detailInfo?.password
+        accountInfo.delegate = self
+        passwordInfo.delegate = self
     }
     
+    // MARK: - Text field delegate
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

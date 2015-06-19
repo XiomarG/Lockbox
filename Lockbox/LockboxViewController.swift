@@ -48,10 +48,10 @@ class LockboxViewController: UICollectionViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "show detail" {
             if let sdvc = segue.destinationViewController as? boxInfoTableViewController {
-                //sdvc.delegate = self
+                sdvc.delegate = self
 
                 sdvc.accounts = boxes[selectedBoxIndex].accounts
-                if selectedBoxIndex == boxes.count {
+                if selectedBoxIndex == boxes.count - 1 {
                     sdvc.isNew = true
                 }
             }
@@ -93,17 +93,17 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
         return sectionInsets
     }
 }
-/*
-extension LockboxViewController : DetailViewControllerDelegate {
-    func ldvcDidFinish(controller: LockboxDetailViewController, newImage: UIImage?, newName: String?, newAccount: String?, newPassword: String?, checkNew : Bool) {
-        if checkNew {
-            boxes.append(lockbox(name: newName!, account: newAccount!, password: newPassword!))
-        } else {
-            boxes[selectedBoxIndex].updateInfoWith(nil, newName: newName, newAccount: newAccount!, newPassword: newPassword!)
-            addEmptyBox()
+
+extension LockboxViewController : BoxInfoTableViewControllerDelegate {
+    func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], checkNew: Bool) {
+        if checkNew == false {
+            boxes[selectedBoxIndex].accounts = newAccounts
+        } else
+        {
+            boxes.insert(Lockbox(newAccounts: newAccounts), atIndex: boxes.count-1)
+            //addEmptyBox()
             collectionView?.reloadData()
         }
         controller.navigationController?.popViewControllerAnimated(true)
     }
 }
-*/

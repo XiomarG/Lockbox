@@ -8,6 +8,7 @@
 
 import UIKit
 
+// this protocol is used to transfer data from this table view to main collectionview
 protocol BoxInfoTableViewControllerDelegate {
     func detailDidFinish(controller: boxInfoTableViewController,
         newAccounts : [Account],
@@ -15,23 +16,76 @@ protocol BoxInfoTableViewControllerDelegate {
 }
 
 
-class boxInfoTableViewController: UITableViewController {
+class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
 
     var delegate : BoxInfoTableViewControllerDelegate? = nil
     
     var accounts = [Account]()
     var isNew = false
     
+    enum textFieldType {
+        case name
+        case password
+    }
+    
     // MARK: - send data back
     
     @IBAction func saveChange(sender: UIBarButtonItem) {
         
-        if delegate != nil {
-            // to do
-            // need to update model from cell
+        let isValid = checkAccounts()
+        
+        if !isValid {
+            let alertController = UIAlertController(title: "Invalid Information", message: "Cannot leave account name or password blank!", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        
+        else if delegate != nil {
+            self.delegate?.detailDidFinish(self, newAccounts: accounts, checkNew: isNew)
         }
         
     }
+    
+    private func checkAccounts() -> Bool {
+        // used to rearrange accounts incase certain cell is empty
+        // if any cell has empty name or empty password return false
+        //var emptyCellIndex = [Int]()
+        var accountSize = accounts.count
+        for (var index = 0; index < accountSize; index++ ){
+            if accounts[index].name == "" && accounts[index].password == "" {
+                accounts.removeAtIndex(index)
+                accountSize = accounts.count
+            }
+        }
+        
+        for index in 0 ..< accounts.count {
+            if accounts[index].name == "" || accounts[index].password == "" {
+                return false
+            }
+        }
+        
+        return true
+    }
+
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)    }
+    
+    func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath, type : textFieldType) {
+        let center = NSNotificationCenter.defaultCenter()
+        let queue = NSOperationQueue.mainQueue()
+        center.addObserverForName(UITextFieldTextDidChangeNotification,
+            object: theTextfield,
+            queue: queue) { _ in
+                switch type {
+                case .name: self.accounts[theIndexPath.row].name = theTextfield.text
+                case .password: self.accounts[theIndexPath.row].password = theTextfield.text
+                }
+                
+        }
+        
+    }
+
 
     // MARK: - Table view data source
 
@@ -46,7 +100,7 @@ class boxInfoTableViewController: UITableViewController {
         // Return the number of rows in the section.
         return accounts.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("detail cell", forIndexPath: indexPath) as! boxInfoViewCell
@@ -54,10 +108,9 @@ class boxInfoTableViewController: UITableViewController {
         cell.detailInfo = accounts[indexPath.row]
         cell.accountInfo.text = cell.detailInfo?.name
         cell.passwordInfo.text = cell.detailInfo?.password
-        
-        
-        
-        
+        observeTextFields(cell.accountInfo, theIndexPath: indexPath, type: textFieldType.name)
+        observeTextFields(cell.passwordInfo, theIndexPath: indexPath, type: textFieldType.password)
+
         return cell
     }
     
