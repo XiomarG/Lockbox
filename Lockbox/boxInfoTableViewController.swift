@@ -28,6 +28,8 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
         case password
     }
     
+    @IBAction func addAccount(sender: UIButton) {
+    }
     // MARK: - send data back
     
     @IBAction func saveChange(sender: UIBarButtonItem) {

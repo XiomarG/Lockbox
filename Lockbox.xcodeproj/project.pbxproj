@@ -16,6 +16,7 @@
 		D94517B61B33E41900168CE4 /* Lockbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B01B33E41900168CE4 /* Lockbox.swift */; };
 		D94517B71B33E41900168CE4 /* LockboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B11B33E41900168CE4 /* LockboxViewController.swift */; };
 		D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B21B33E41900168CE4 /* AppDelegate.swift */; };
+		D94517BE1B34E0E800168CE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94517BC1B34E0E800168CE4 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		D94517B01B33E41900168CE4 /* Lockbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lockbox.swift; sourceTree = "<group>"; };
 		D94517B11B33E41900168CE4 /* LockboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockboxViewController.swift; sourceTree = "<group>"; };
 		D94517B21B33E41900168CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D94517BD1B34E0E800168CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +85,12 @@
 		D945178A1B33E1A500168CE4 /* Lockbox */ = {
 			isa = PBXGroup;
 			children = (
+				D94517BC1B34E0E800168CE4 /* Main.storyboard */,
 				D94517AD1B33E41900168CE4 /* LockboxViewCell.swift */,
 				D94517AE1B33E41900168CE4 /* boxInfoTableViewController.swift */,
 				D94517AF1B33E41900168CE4 /* BoxInfoViewCell.swift */,
 				D94517B01B33E41900168CE4 /* Lockbox.swift */,
 				D94517B11B33E41900168CE4 /* LockboxViewController.swift */,
-				D94517B21B33E41900168CE4 /* AppDelegate.swift */,
 				D945178B1B33E1A500168CE4 /* Supporting Files */,
 			);
 			path = Lockbox;
@@ -97,6 +99,7 @@
 		D945178B1B33E1A500168CE4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D94517B21B33E41900168CE4 /* AppDelegate.swift */,
 				D94517941B33E1A600168CE4 /* Images.xcassets */,
 				D94517961B33E1A600168CE4 /* LaunchScreen.xib */,
 				D945178C1B33E1A500168CE4 /* Info.plist */,
@@ -201,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D94517BE1B34E0E800168CE4 /* Main.storyboard in Resources */,
 				D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */,
 				D94517951B33E1A600168CE4 /* Images.xcassets in Resources */,
 			);
@@ -254,6 +258,14 @@
 				D94517971B33E1A600168CE4 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		D94517BC1B34E0E800168CE4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D94517BD1B34E0E800168CE4 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -415,6 +427,7 @@
 				D94517A91B33E1A600168CE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D94517AA1B33E1A600168CE4 /* Build configuration list for PBXNativeTarget "LockboxTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				D94517AC1B33E1A600168CE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
