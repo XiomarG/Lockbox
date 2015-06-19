@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9BCACEF1B3108AB001324B8"
+               BlueprintIdentifier = "D94517871B33E1A500168CE4"
                BuildableName = "Lockbox.app"
                BlueprintName = "Lockbox"
                ReferencedContainer = "container:Lockbox.xcodeproj">
@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9BCAD041B3108AB001324B8"
+               BlueprintIdentifier = "D945179C1B33E1A600168CE4"
                BuildableName = "LockboxTests.xctest"
                BlueprintName = "LockboxTests"
                ReferencedContainer = "container:Lockbox.xcodeproj">
@@ -46,7 +46,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9BCAD041B3108AB001324B8"
+               BlueprintIdentifier = "D945179C1B33E1A600168CE4"
                BuildableName = "LockboxTests.xctest"
                BlueprintName = "LockboxTests"
                ReferencedContainer = "container:Lockbox.xcodeproj">
@@ -56,7 +56,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D9BCACEF1B3108AB001324B8"
+            BlueprintIdentifier = "D94517871B33E1A500168CE4"
             BuildableName = "Lockbox.app"
             BlueprintName = "Lockbox"
             ReferencedContainer = "container:Lockbox.xcodeproj">
@@ -76,7 +76,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D9BCACEF1B3108AB001324B8"
+            BlueprintIdentifier = "D94517871B33E1A500168CE4"
             BuildableName = "Lockbox.app"
             BlueprintName = "Lockbox"
             ReferencedContainer = "container:Lockbox.xcodeproj">
@@ -95,7 +95,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D9BCACEF1B3108AB001324B8"
+            BlueprintIdentifier = "D94517871B33E1A500168CE4"
             BuildableName = "Lockbox.app"
             BlueprintName = "Lockbox"
             ReferencedContainer = "container:Lockbox.xcodeproj">
