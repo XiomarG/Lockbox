@@ -172,6 +172,13 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="KzX-g1-rRm">
+                        <nil key="title"/>
+                        <textField key="titleView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input App Name Here" textAlignment="center" minimumFontSize="17" id="60Q-I2-YiQ">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="aK2-Te-n6c">
                             <connections>
                                 <action selector="saveChange:" destination="IWZ-lS-JrD" id="I88-Mk-CAa"/>
@@ -179,6 +186,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="appName" destination="60Q-I2-YiQ" id="GEV-LB-oJ2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8j-rM-h5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -15,18 +15,45 @@ class LockboxViewController: UICollectionViewController {
     var boxes = [Lockbox]()
     var selectedBoxIndex : Int = 0
     
+    var dataFilePath : String?
+    
+    
     private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
     private let reuseIdentifier = "lockboxCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeTestData()
-        addEmptyBox()
+        
+        let filemgr = NSFileManager.defaultManager()
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let docsDir = dirPaths[0] as! String
+        dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
+        
+        if filemgr.fileExistsAtPath(dataFilePath!) {
+            let dataArray = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [Lockbox]
+                boxes = dataArray
+        }
+        else {
+            initializeTestData()
+            addEmptyBox()
+        }
     }
     
     private func addEmptyBox() {
         boxes.append(Lockbox(accountName: "", password: ""))
     }
+    
+    private func refreshBoxes() {
+        var boxesSize = boxes.count
+        for (var index = 0; index < boxesSize; index++){
+            if boxes[index].accounts.isEmpty {
+                boxes.removeAtIndex(index)
+                boxesSize = boxes.count
+                index--
+            }
+        }
+    }
+
     
     private func initializeTestData() {
         boxes.append(Lockbox(accountName: "111", password: "bbb"))
@@ -51,6 +78,7 @@ class LockboxViewController: UICollectionViewController {
                 sdvc.delegate = self
 
                 sdvc.accounts = boxes[selectedBoxIndex].accounts
+                sdvc.myName = boxes[selectedBoxIndex].appName
                 if selectedBoxIndex == boxes.count - 1 {
                     sdvc.isNew = true
                 }
@@ -95,15 +123,17 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension LockboxViewController : BoxInfoTableViewControllerDelegate {
-    func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], checkNew: Bool) {
+    func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], newAppName: String?, checkNew: Bool) {
         if checkNew == false {
+            boxes[selectedBoxIndex].appName = newAppName
             boxes[selectedBoxIndex].accounts = newAccounts
-        } else
-        {
+        } else {
             boxes.insert(Lockbox(newAccounts: newAccounts), atIndex: boxes.count-1)
-            //addEmptyBox()
-            collectionView?.reloadData()
+                //addEmptyBox()
         }
+        refreshBoxes()
+        collectionView?.reloadData()
+        NSKeyedArchiver.archiveRootObject(boxes, toFile: dataFilePath!)
         controller.navigationController?.popViewControllerAnimated(true)
     }
 }

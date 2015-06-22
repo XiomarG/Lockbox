@@ -12,6 +12,7 @@ import UIKit
 protocol BoxInfoTableViewControllerDelegate {
     func detailDidFinish(controller: boxInfoTableViewController,
         newAccounts : [Account],
+        newAppName: String?,
         checkNew : Bool)
 }
 
@@ -20,15 +21,27 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
 
     var delegate : BoxInfoTableViewControllerDelegate? = nil
     
+    var myName : String?
     var accounts = [Account]()
     var isNew = false
     
     enum textFieldType {
-        case name
+        case appName
+        case accountName
         case password
     }
     
+    static let appNameFontSize = CGFloat(20)
+    
+    
+    @IBOutlet weak var appName: UITextField!
+    
+    
+    // MARK: - add new account
+    
     @IBAction func addAccount(sender: UIButton) {
+        accounts.append(Account(name:"", password: ""))
+        tableView.reloadData()
     }
     // MARK: - send data back
     
@@ -43,7 +56,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         else if delegate != nil {
-            self.delegate?.detailDidFinish(self, newAccounts: accounts, checkNew: isNew)
+            self.delegate?.detailDidFinish(self, newAccounts: accounts, newAppName: myName, checkNew: isNew)
         }
         
     }
@@ -53,10 +66,11 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
         // if any cell has empty name or empty password return false
         //var emptyCellIndex = [Int]()
         var accountSize = accounts.count
-        for (var index = 0; index < accountSize; index++ ){
+        for (var index = 0; index < accountSize; index++){
             if accounts[index].name == "" && accounts[index].password == "" {
                 accounts.removeAtIndex(index)
                 accountSize = accounts.count
+                index--
             }
         }
         
@@ -69,19 +83,30 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
 
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        appName.text = myName
+        appName.sizeToFit()
+        if myName != nil {
+            appName.borderStyle = UITextBorderStyle.None
+            appName.font = appName.font.fontWithSize(20)
+            appName.textColor = UIColor.blueColor()
+        } else {
+            appName.borderStyle = UITextBorderStyle.RoundedRect
+        }
+        observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
+    }
     
-    func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath, type : textFieldType) {
+    func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath?, type : textFieldType) {
         let center = NSNotificationCenter.defaultCenter()
         let queue = NSOperationQueue.mainQueue()
         center.addObserverForName(UITextFieldTextDidChangeNotification,
             object: theTextfield,
             queue: queue) { _ in
                 switch type {
-                case .name: self.accounts[theIndexPath.row].name = theTextfield.text
-                case .password: self.accounts[theIndexPath.row].password = theTextfield.text
+                case .appName: self.myName = theTextfield.text
+                case .accountName: self.accounts[theIndexPath!.row].name = theTextfield.text
+                case .password: self.accounts[theIndexPath!.row].password = theTextfield.text
                 }
                 
         }
@@ -110,56 +135,10 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
         cell.detailInfo = accounts[indexPath.row]
         cell.accountInfo.text = cell.detailInfo?.name
         cell.passwordInfo.text = cell.detailInfo?.password
-        observeTextFields(cell.accountInfo, theIndexPath: indexPath, type: textFieldType.name)
+        observeTextFields(cell.accountInfo, theIndexPath: indexPath, type: textFieldType.accountName)
         observeTextFields(cell.passwordInfo, theIndexPath: indexPath, type: textFieldType.password)
 
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

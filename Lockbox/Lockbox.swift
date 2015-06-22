@@ -9,19 +9,41 @@
 import Foundation
 import UIKit
 
-struct Account {
-    var name : String
-    var password : String
+class  Account : NSObject, NSCoding {
+    var name : String = ""
+    var password : String = ""
+    init (name : String, password : String) {
+        self.name = name
+        self.password = password
+    }
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "NAME_KEY")
+        aCoder.encodeObject(password, forKey: "PASSWORD_KEY")
+        
+        
+    }
+    required init(coder aDecoder: NSCoder) {
+        name = aDecoder.decodeObjectForKey("NAME_KEY") as! String
+        password = aDecoder.decodeObjectForKey("PASSWORD_KEY") as! String
+    }
+    
 }
 
-class Lockbox {
+
+class Lockbox : NSObject, NSCoding  {
     
     var icon : UIImage?
-    var name : String?
+    var appName : String?
+    
+    private struct Constants {
+        static let LBIcon = "LBIcon"
+        static let LBName = "LBName"
+        static let LBAccounts = "LBAccounts"
+    }
     
     
     var accounts = [Account]()
-    
+        
     init ( accountName: String, password : String ){
         self.accounts.append(Account(name: accountName,password: password))
     }
@@ -33,6 +55,18 @@ class Lockbox {
     func updateInfoWith (image : UIImage?, newName name : String?, newAccount account : String, newPassword password : String) {
         self.icon = image
         self.name = name
-        self.accounts = 
+        self.accounts =
     }*/
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(icon, forKey: Constants.LBIcon)
+        aCoder.encodeObject(appName, forKey: Constants.LBName)
+        aCoder.encodeObject(accounts, forKey: Constants.LBAccounts)
+        
+        
+    }
+    required init(coder aDecoder: NSCoder) {
+        appName = aDecoder.decodeObjectForKey(Constants.LBName) as?     String
+        accounts = aDecoder.decodeObjectForKey(Constants.LBAccounts) as! [Account]
+    }
 }

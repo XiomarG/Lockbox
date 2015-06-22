@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F6D6D5A7-83C5-4101-9841-F1DD5801F882</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Lockbox</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>77F5EB49C14921A0ADD33C430589E05A792CB5AE</key>
+		<string>https://github.com/XiomarG/Lockbox.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Lockbox.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>77F5EB49C14921A0ADD33C430589E05A792CB5AE</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/XiomarG/Lockbox.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>77F5EB49C14921A0ADD33C430589E05A792CB5AE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>77F5EB49C14921A0ADD33C430589E05A792CB5AE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Lockbox</string>
+		</dict>
+	</array>
+</dict>
+</plist>
