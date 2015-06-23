@@ -7,21 +7,24 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 // this protocol is used to transfer data from this table view to main collectionview
 protocol BoxInfoTableViewControllerDelegate {
     func detailDidFinish(controller: boxInfoTableViewController,
         newAccounts : [Account],
         newAppName: String?,
+        newAppIcon: UIImage?,
         checkNew : Bool)
 }
 
 
-class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
+class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var delegate : BoxInfoTableViewControllerDelegate? = nil
     
     var myName : String?
+    var myImage : UIImage?
     var accounts = [Account]()
     var isNew = false
     
@@ -36,6 +39,63 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var appName: UITextField!
     
+    // MARK: - Set App Image
+    
+    @IBOutlet weak var setImageButton: UIButton!
+    @IBAction func setImage() {
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera)
+        {
+            let optionMenu = UIAlertController(title: "Choose Image From", message: "", preferredStyle: .ActionSheet)
+            let fromCamera = UIAlertAction(title: "Camera", style: .Default)
+            {   _ -> Void in
+                self.takePhoto()
+            }
+            let fromLibrary = UIAlertAction(title: "Library", style: .Default)
+            {   _ -> Void in
+                self.choosePhotoFromLibrary()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel)
+            {    _ -> Void in
+                println("Cancelled")
+            }
+            
+            optionMenu.addAction(fromCamera)
+            optionMenu.addAction(fromLibrary)
+            optionMenu.addAction(cancelAction)
+            self.presentViewController(optionMenu, animated: true, completion: nil)
+        } else {
+            choosePhotoFromLibrary()
+        }
+    }
+    
+    private func takePhoto() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .Camera
+        picker.mediaTypes = [kUTTypeImage]
+        picker.delegate = self
+        picker.allowsEditing = true
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    private func choosePhotoFromLibrary() {
+        let picker = UIImagePickerController()
+        picker.sourceType = .PhotoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        myImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        if myImage == nil {
+            myImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        }
+        setImageButton.setImage(myImage, forState: UIControlState.Normal)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+
     
     // MARK: - add new account
     
@@ -56,7 +116,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
         }
         
         else if delegate != nil {
-            self.delegate?.detailDidFinish(self, newAccounts: accounts, newAppName: myName, checkNew: isNew)
+            self.delegate?.detailDidFinish(self, newAccounts: accounts, newAppName: myName, newAppIcon: myImage, checkNew: isNew)
         }
         
     }
@@ -79,7 +139,6 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
                 return false
             }
         }
-        
         return true
     }
 
@@ -93,6 +152,9 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
             appName.textColor = UIColor.blueColor()
         } else {
             appName.borderStyle = UITextBorderStyle.RoundedRect
+        }
+        if myImage != nil {
+            setImageButton.setImage(myImage, forState: UIControlState.Normal)
         }
         observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
     }
@@ -108,9 +170,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate {
                 case .accountName: self.accounts[theIndexPath!.row].name = theTextfield.text
                 case .password: self.accounts[theIndexPath!.row].password = theTextfield.text
                 }
-                
         }
-        
     }
 
 

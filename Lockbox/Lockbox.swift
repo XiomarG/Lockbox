@@ -48,24 +48,19 @@ class Lockbox : NSObject, NSCoding  {
         self.accounts.append(Account(name: accountName,password: password))
     }
     
-    init ( newAccounts : [Account]) {
+    init ( newAccounts : [Account], newAppName: String?) {
         self.accounts = newAccounts
+        self.appName = newAppName
     }
-    /*
-    func updateInfoWith (image : UIImage?, newName name : String?, newAccount account : String, newPassword password : String) {
-        self.icon = image
-        self.name = name
-        self.accounts =
-    }*/
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(icon, forKey: Constants.LBIcon)
         aCoder.encodeObject(appName, forKey: Constants.LBName)
         aCoder.encodeObject(accounts, forKey: Constants.LBAccounts)
-        
-        
     }
+    
     required init(coder aDecoder: NSCoder) {
+        icon = aDecoder.decodeObjectForKey(Constants.LBIcon) as? UIImage
         appName = aDecoder.decodeObjectForKey(Constants.LBName) as?     String
         accounts = aDecoder.decodeObjectForKey(Constants.LBAccounts) as! [Account]
     }

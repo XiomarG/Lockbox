@@ -79,6 +79,7 @@ class LockboxViewController: UICollectionViewController {
 
                 sdvc.accounts = boxes[selectedBoxIndex].accounts
                 sdvc.myName = boxes[selectedBoxIndex].appName
+                sdvc.myImage = boxes[selectedBoxIndex].icon
                 if selectedBoxIndex == boxes.count - 1 {
                     sdvc.isNew = true
                 }
@@ -123,12 +124,13 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension LockboxViewController : BoxInfoTableViewControllerDelegate {
-    func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], newAppName: String?, checkNew: Bool) {
+    func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], newAppName: String?, newAppIcon: UIImage?, checkNew: Bool) {
         if checkNew == false {
             boxes[selectedBoxIndex].appName = newAppName
+            boxes[selectedBoxIndex].icon = newAppIcon
             boxes[selectedBoxIndex].accounts = newAccounts
         } else {
-            boxes.insert(Lockbox(newAccounts: newAccounts), atIndex: boxes.count-1)
+            boxes.insert(Lockbox(newAccounts: newAccounts, newAppName: newAppName), atIndex: boxes.count-1)
                 //addEmptyBox()
         }
         refreshBoxes()
