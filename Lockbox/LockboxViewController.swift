@@ -34,7 +34,7 @@ class LockboxViewController: UICollectionViewController {
                 boxes = dataArray
         }
         else {
-            initializeTestData()
+            //initializeTestData()
             addEmptyBox()
         }
     }
@@ -61,15 +61,6 @@ class LockboxViewController: UICollectionViewController {
         boxes.append(Lockbox(accountName: "333", password: "bbb"))
         boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
         boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -109,7 +100,10 @@ class LockboxViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! LockboxViewCell
         
         if indexPath.row < boxes.count - 1 {
-        cell.backgroundColor = UIColor.blackColor()
+            if boxes[indexPath.row].icon != nil {
+                cell.boxImage.image = boxes[indexPath.row].icon
+            }
+            cell.backgroundColor = UIColor.blackColor()
         } else {
             cell.backgroundColor = UIColor.redColor()
         }
@@ -125,13 +119,12 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
 
 extension LockboxViewController : BoxInfoTableViewControllerDelegate {
     func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], newAppName: String?, newAppIcon: UIImage?, checkNew: Bool) {
-        if checkNew == false {
-            boxes[selectedBoxIndex].appName = newAppName
-            boxes[selectedBoxIndex].icon = newAppIcon
-            boxes[selectedBoxIndex].accounts = newAccounts
-        } else {
-            boxes.insert(Lockbox(newAccounts: newAccounts, newAppName: newAppName), atIndex: boxes.count-1)
-                //addEmptyBox()
+        
+        boxes[selectedBoxIndex].appName = newAppName
+        boxes[selectedBoxIndex].icon = newAppIcon
+        boxes[selectedBoxIndex].accounts = newAccounts
+        if checkNew == true {
+            addEmptyBox()
         }
         refreshBoxes()
         collectionView?.reloadData()

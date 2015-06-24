@@ -82,7 +82,7 @@
                                         <constraint firstAttribute="width" constant="155" id="NRg-MK-1DZ"/>
                                         <constraint firstAttribute="width" secondItem="b5i-Kp-WkF" secondAttribute="height" multiplier="51:40" id="Vhw-zn-UE9"/>
                                     </constraints>
-                                    <state key="normal" title="Button" image="defaultKeyImage.png">
+                                    <state key="normal" title="Button">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>
@@ -214,7 +214,4 @@
             <point key="canvasLocation" x="472" y="385"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="defaultKeyImage.png" width="200" height="175"/>
-    </resources>
 </document>

@@ -153,9 +153,10 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         } else {
             appName.borderStyle = UITextBorderStyle.RoundedRect
         }
-        if myImage != nil {
-            setImageButton.setImage(myImage, forState: UIControlState.Normal)
+        if myImage == nil {
+            myImage = UIImage(named: "defaultKeyImage")
         }
+        setImageButton.setImage(myImage, forState: UIControlState.Normal)
         observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
     }
     

@@ -17,7 +17,7 @@
 		D94517B71B33E41900168CE4 /* LockboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B11B33E41900168CE4 /* LockboxViewController.swift */; };
 		D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B21B33E41900168CE4 /* AppDelegate.swift */; };
 		D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94517BC1B34E0E800168CE4 /* LockboxMain.storyboard */; };
-		D9739BDE1B390A2800812683 /* defaultKeyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D9739BDD1B390A2800812683 /* defaultKeyImage.png */; };
+		D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B331B3A70520029DD3F /* defaultKeyImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		D94517B11B33E41900168CE4 /* LockboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockboxViewController.swift; sourceTree = "<group>"; };
 		D94517B21B33E41900168CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D94517BD1B34E0E800168CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LockboxMain.storyboard; sourceTree = "<group>"; };
-		D9739BDD1B390A2800812683 /* defaultKeyImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultKeyImage.png; sourceTree = "<group>"; };
+		D9942B331B3A70520029DD3F /* defaultKeyImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultKeyImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +101,7 @@
 		D945178B1B33E1A500168CE4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9739BDD1B390A2800812683 /* defaultKeyImage.png */,
+				D9942B331B3A70520029DD3F /* defaultKeyImage.png */,
 				D94517B21B33E41900168CE4 /* AppDelegate.swift */,
 				D94517941B33E1A600168CE4 /* Images.xcassets */,
 				D94517961B33E1A600168CE4 /* LaunchScreen.xib */,
@@ -211,7 +211,7 @@
 				D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */,
 				D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */,
 				D94517951B33E1A600168CE4 /* Images.xcassets in Resources */,
-				D9739BDE1B390A2800812683 /* defaultKeyImage.png in Resources */,
+				D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
