@@ -18,6 +18,7 @@
 		D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B21B33E41900168CE4 /* AppDelegate.swift */; };
 		D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94517BC1B34E0E800168CE4 /* LockboxMain.storyboard */; };
 		D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B331B3A70520029DD3F /* defaultKeyImage.png */; };
+		D9942B361B3B8E070029DD3F /* myAddIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B351B3B8E070029DD3F /* myAddIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		D94517B21B33E41900168CE4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D94517BD1B34E0E800168CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LockboxMain.storyboard; sourceTree = "<group>"; };
 		D9942B331B3A70520029DD3F /* defaultKeyImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultKeyImage.png; sourceTree = "<group>"; };
+		D9942B351B3B8E070029DD3F /* myAddIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myAddIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				D9942B331B3A70520029DD3F /* defaultKeyImage.png */,
+				D9942B351B3B8E070029DD3F /* myAddIcon.png */,
 				D94517B21B33E41900168CE4 /* AppDelegate.swift */,
 				D94517941B33E1A600168CE4 /* Images.xcassets */,
 				D94517961B33E1A600168CE4 /* LaunchScreen.xib */,
@@ -212,6 +215,7 @@
 				D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */,
 				D94517951B33E1A600168CE4 /* Images.xcassets in Resources */,
 				D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */,
+				D9942B361B3B8E070029DD3F /* myAddIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

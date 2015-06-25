@@ -14,8 +14,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MOi-Ml-yBW">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="MOi-Ml-yBW">
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -25,16 +25,38 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uqE-Fa-O6L">
-                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uqE-Fa-O6L">
+                                            <rect key="frame" x="8" y="8" width="384" height="384"/>
                                         </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <size key="customSize" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstItem="uqE-Fa-O6L" firstAttribute="leading" secondItem="Cs1-qf-Bgd" secondAttribute="leadingMargin" id="CJ1-IO-WNr"/>
+                                    <constraint firstItem="uqE-Fa-O6L" firstAttribute="bottom" secondItem="Cs1-qf-Bgd" secondAttribute="bottomMargin" id="FEg-qq-5b8"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="uqE-Fa-O6L" secondAttribute="trailing" id="Iq5-8D-Csn"/>
+                                    <constraint firstAttribute="centerX" secondItem="uqE-Fa-O6L" secondAttribute="centerX" id="LAL-Um-5cF"/>
+                                    <constraint firstItem="uqE-Fa-O6L" firstAttribute="trailing" secondItem="Cs1-qf-Bgd" secondAttribute="trailingMargin" id="P1g-Wc-V4I"/>
+                                    <constraint firstItem="uqE-Fa-O6L" firstAttribute="top" secondItem="Cs1-qf-Bgd" secondAttribute="topMargin" id="Xkc-cI-FGh"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="uqE-Fa-O6L" secondAttribute="bottom" id="YvQ-26-vry"/>
+                                    <constraint firstItem="uqE-Fa-O6L" firstAttribute="leading" secondItem="Cs1-qf-Bgd" secondAttribute="leadingMargin" id="ocg-Ls-0fP"/>
+                                    <constraint firstItem="uqE-Fa-O6L" firstAttribute="top" secondItem="Cs1-qf-Bgd" secondAttribute="topMargin" id="s3J-gg-EqJ"/>
+                                    <constraint firstAttribute="centerY" secondItem="uqE-Fa-O6L" secondAttribute="centerY" id="yiQ-yE-leX"/>
+                                </constraints>
+                                <size key="customSize" width="400" height="400"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Iq5-8D-Csn"/>
+                                        <exclude reference="LAL-Um-5cF"/>
+                                        <exclude reference="YvQ-26-vry"/>
+                                        <exclude reference="ocg-Ls-0fP"/>
+                                        <exclude reference="s3J-gg-EqJ"/>
+                                        <exclude reference="yiQ-yE-leX"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="boxImage" destination="uqE-Fa-O6L" id="lLC-N3-2To"/>
                                 </connections>
@@ -63,11 +85,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="2oq-wB-JbE">
-                            <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="250"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tl4-0Q-74n">
-                                    <rect key="frame" x="237" y="141" width="126" height="39"/>
+                                    <rect key="frame" x="237" y="191" width="126" height="39"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <state key="normal" title="Add Account">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -77,12 +99,13 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5i-Kp-WkF">
-                                    <rect key="frame" x="223" y="20" width="155" height="122"/>
+                                    <rect key="frame" x="223" y="20" width="155" height="155"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="155" id="NRg-MK-1DZ"/>
-                                        <constraint firstAttribute="width" secondItem="b5i-Kp-WkF" secondAttribute="height" multiplier="51:40" id="Vhw-zn-UE9"/>
+                                        <constraint firstAttribute="width" secondItem="b5i-Kp-WkF" secondAttribute="height" multiplier="1:1" id="Vhw-zn-UE9"/>
                                     </constraints>
                                     <state key="normal" title="Button">
+                                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <connections>

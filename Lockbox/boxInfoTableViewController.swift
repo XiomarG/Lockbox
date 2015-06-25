@@ -86,8 +86,11 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         presentViewController(picker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject])
+    {
+        
         myImage = info[UIImagePickerControllerEditedImage] as? UIImage
+
         if myImage == nil {
             myImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         }

@@ -8,9 +8,12 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
+var imageSize : CGSize?
 
 class LockboxViewController: UICollectionViewController {
+    
+    
+
     
     var boxes = [Lockbox]()
     var selectedBoxIndex : Int = 0
@@ -18,8 +21,9 @@ class LockboxViewController: UICollectionViewController {
     var dataFilePath : String?
     
     
-    private let sectionInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
+    private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     private let reuseIdentifier = "lockboxCell"
+    private let minCellSpacing = CGFloat(0.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,13 +103,19 @@ class LockboxViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! LockboxViewCell
         
+        var cellsize = cell.frame.size
+        //cell.boxImage.frame.size = cell.frame.size
         if indexPath.row < boxes.count - 1 {
             if boxes[indexPath.row].icon != nil {
                 cell.boxImage.image = boxes[indexPath.row].icon
+                imageSize = boxes[indexPath.row].icon!.size
+                imageSize = cell.boxImage.image!.size
+                //cell.boxImage.
             }
-            cell.backgroundColor = UIColor.blackColor()
+            //cell.backgroundColor = UIColor.blackColor()
         } else {
-            cell.backgroundColor = UIColor.redColor()
+            cell.boxImage.image = UIImage(named: "myAddIcon")
+            //cell.backgroundColor = UIColor.redColor()
         }
         return cell
     }
@@ -115,14 +125,28 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        var size = collectionView.frame.size
+        size.width = (size.width - sectionInsets.left - sectionInsets.right - minCellSpacing * 2) / 3
+        size.height = size.width
+        return size
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return minCellSpacing
+    }
+    
+    
 }
 
 extension LockboxViewController : BoxInfoTableViewControllerDelegate {
     func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], newAppName: String?, newAppIcon: UIImage?, checkNew: Bool) {
-        
+        imageSize = newAppIcon?.size
         boxes[selectedBoxIndex].appName = newAppName
         boxes[selectedBoxIndex].icon = newAppIcon
         boxes[selectedBoxIndex].accounts = newAccounts
+        imageSize = boxes[selectedBoxIndex].icon?.size
         if checkNew == true {
             addEmptyBox()
         }
