@@ -9,6 +9,7 @@
 import UIKit
 
 var imageSize : CGSize?
+var tempImage : UIImage?
 
 class LockboxViewController: UICollectionViewController {
     
@@ -105,12 +106,15 @@ class LockboxViewController: UICollectionViewController {
         
         var cellsize = cell.frame.size
         //cell.boxImage.frame.size = cell.frame.size
+        tempImage = boxes[indexPath.row].icon
         if indexPath.row < boxes.count - 1 {
             if boxes[indexPath.row].icon != nil {
                 cell.boxImage.image = boxes[indexPath.row].icon
                 imageSize = boxes[indexPath.row].icon!.size
                 imageSize = cell.boxImage.image!.size
                 //cell.boxImage.
+            } else {
+                cell.boxImage.image = UIImage(named: "defaultKeyImage")
             }
             //cell.backgroundColor = UIColor.blackColor()
         } else {
@@ -121,7 +125,32 @@ class LockboxViewController: UICollectionViewController {
     }
 }
 
-extension LockboxViewController : UICollectionViewDelegateFlowLayout {
+extension LockboxViewController : LXReorderableCollectionViewDataSource {
+    
+    func collectionView(collectionView: UICollectionView!, itemAtIndexPath fromIndexPath: NSIndexPath!, willMoveToIndexPath toIndexPath: NSIndexPath!) {
+        let pickedBox = boxes[fromIndexPath.row]
+        boxes.removeAtIndex(fromIndexPath.row)
+        boxes.insert(pickedBox, atIndex: toIndexPath.row)
+    }
+    
+    func collectionView(collectionView: UICollectionView!, itemAtIndexPath fromIndexPath: NSIndexPath!, canMoveToIndexPath toIndexPath: NSIndexPath!) -> Bool {
+        if fromIndexPath.row == boxes.count-1 {  return false }
+            
+        if toIndexPath.row == boxes.count-1   {  return false }
+        
+        return true
+    }
+    
+    func collectionView(collectionView: UICollectionView!, canMoveItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        if indexPath.row == boxes.count-1 { return false }
+        return true
+    }
+    
+    
+    
+}
+
+extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return sectionInsets
     }
@@ -137,6 +166,21 @@ extension LockboxViewController : UICollectionViewDelegateFlowLayout {
         return minCellSpacing
     }
     
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, didEndDraggingItemAtIndexPath indexPath: NSIndexPath!) {
+        println("did end drag")
+        NSKeyedArchiver.archiveRootObject(boxes, toFile: dataFilePath!)
+    }
+/*
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, didBeginDraggingItemAtIndexPath indexPath: NSIndexPath!) {
+        println("did begin drag")
+    }
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, willBeginDraggingItemAtIndexPath indexPath: NSIndexPath!) {
+        println("will begin drag")
+    }
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, willEndDraggingItemAtIndexPath indexPath: NSIndexPath!) {
+        println("did begin drag")
+    }
+    */
     
 }
 
@@ -146,6 +190,7 @@ extension LockboxViewController : BoxInfoTableViewControllerDelegate {
         boxes[selectedBoxIndex].appName = newAppName
         boxes[selectedBoxIndex].icon = newAppIcon
         boxes[selectedBoxIndex].accounts = newAccounts
+        tempImage = newAppIcon
         imageSize = boxes[selectedBoxIndex].icon?.size
         if checkNew == true {
             addEmptyBox()
