@@ -10,6 +10,7 @@ import UIKit
 
 var imageSize : CGSize?
 var tempImage : UIImage?
+var tempAccount : Account?
 
 class LockboxViewController: UICollectionViewController {
     
@@ -29,19 +30,26 @@ class LockboxViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let filemgr = NSFileManager.defaultManager()
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let docsDir = dirPaths[0] as! String
-        dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
-        
-        if filemgr.fileExistsAtPath(dataFilePath!) {
-            let dataArray = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [Lockbox]
-                boxes = dataArray
-        }
-        else {
+        if self.loadDataFromFile() == false
+        {
             //initializeTestData()
             addEmptyBox()
         }
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadDataFromFile()
+        
+        
+        
+        // test for password view
+        let testPassword = false
+        
+        if testPassword {
+        let passwordViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
+        self.presentViewController(passwordViewController!, animated: true, completion: nil)
+        }
+
     }
     
     private func addEmptyBox() {
@@ -57,6 +65,22 @@ class LockboxViewController: UICollectionViewController {
                 index--
             }
         }
+    }
+    
+    private func loadDataFromFile() -> Bool {
+        
+        let filemgr = NSFileManager.defaultManager()
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let docsDir = dirPaths[0] as! String
+        dataFilePath = docsDir.stringByAppendingPathComponent("data.archive")
+        
+        if filemgr.fileExistsAtPath(dataFilePath!) {
+            let dataArray = NSKeyedUnarchiver.unarchiveObjectWithFile(dataFilePath!) as! [Lockbox]
+            boxes = dataArray
+            return true
+        }
+        else { return false }
+
     }
 
     
@@ -74,6 +98,8 @@ class LockboxViewController: UICollectionViewController {
                 sdvc.delegate = self
 
                 sdvc.accounts = boxes[selectedBoxIndex].accounts
+                tempAccount = boxes[selectedBoxIndex].accounts[0]
+                tempAccount = sdvc.accounts[0]
                 sdvc.myName = boxes[selectedBoxIndex].appName
                 sdvc.myImage = boxes[selectedBoxIndex].icon
                 if selectedBoxIndex == boxes.count - 1 {

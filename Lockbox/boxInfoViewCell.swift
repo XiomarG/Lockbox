@@ -29,4 +29,5 @@ class boxInfoViewCell: UITableViewCell, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+
 }

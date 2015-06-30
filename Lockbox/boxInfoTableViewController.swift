@@ -28,6 +28,9 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     var accounts = [Account]()
     var isNew = false
     
+    private var isNewAccountTrigger = false
+    
+    
     enum textFieldType {
         case appName
         case accountName
@@ -105,6 +108,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     @IBAction func addAccount(sender: UIButton) {
         accounts.append(Account(name:"", password: ""))
         tableView.reloadData()
+        isNewAccountTrigger = true
     }
     // MARK: - send data back
     
@@ -201,7 +205,13 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         cell.passwordInfo.text = cell.detailInfo?.password
         observeTextFields(cell.accountInfo, theIndexPath: indexPath, type: textFieldType.accountName)
         observeTextFields(cell.passwordInfo, theIndexPath: indexPath, type: textFieldType.password)
-
+        if self.isNew {
+            cell.accountInfo.becomeFirstResponder()
+        }
+        if isNewAccountTrigger && indexPath.row == accounts.count-1 {
+            cell.accountInfo.becomeFirstResponder()
+            isNewAccountTrigger = false
+        }
         return cell
     }
     
