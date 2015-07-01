@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HFg-0X-liw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HFg-0X-liw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -378,10 +378,10 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultKeyImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
-                                <rect key="frame" x="200" y="70" width="200" height="200"/>
+                                <rect key="frame" x="210" y="92" width="180" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vg2-Ns-08y" secondAttribute="height" id="EPD-m8-HlP"/>
-                                    <constraint firstAttribute="width" constant="200" id="QL1-X6-dPh"/>
+                                    <constraint firstAttribute="width" constant="180" id="QL1-X6-dPh"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-NA-9Gy">
@@ -390,16 +390,28 @@
                                 <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYu-AW-8FV">
+                                <rect key="frame" x="276" y="62" width="49" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="vif-NV-29L"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xuW-sj-56q" secondAttribute="trailing" id="4zt-uS-vHi"/>
                             <constraint firstItem="Vg2-Ns-08y" firstAttribute="top" secondItem="0eC-7T-Tgt" secondAttribute="bottom" constant="20" id="UuK-Ck-8eQ"/>
+                            <constraint firstItem="sYu-AW-8FV" firstAttribute="trailing" secondItem="wk3-NA-9Gy" secondAttribute="trailing" id="Z2u-RJ-JiD"/>
+                            <constraint firstItem="sYu-AW-8FV" firstAttribute="top" secondItem="wk3-NA-9Gy" secondAttribute="bottom" constant="8" symbolic="YES" id="ZeK-md-1LQ"/>
+                            <constraint firstItem="sYu-AW-8FV" firstAttribute="leading" secondItem="wk3-NA-9Gy" secondAttribute="leading" id="ci0-3r-TRf"/>
                             <constraint firstItem="xuW-sj-56q" firstAttribute="top" secondItem="0eC-7T-Tgt" secondAttribute="bottom" constant="260" id="dHl-sH-A9o"/>
                             <constraint firstItem="wk3-NA-9Gy" firstAttribute="centerX" secondItem="Vg2-Ns-08y" secondAttribute="centerX" id="elt-vx-ejj"/>
                             <constraint firstAttribute="bottomMargin" secondItem="xuW-sj-56q" secondAttribute="bottom" id="fH4-TK-7EB"/>
                             <constraint firstItem="wk3-NA-9Gy" firstAttribute="top" secondItem="0eC-7T-Tgt" secondAttribute="bottom" constant="10" id="ga2-bj-qdv"/>
-                            <constraint firstItem="xuW-sj-56q" firstAttribute="top" secondItem="Vg2-Ns-08y" secondAttribute="bottom" constant="10" id="hf3-EA-XAi"/>
+                            <constraint firstItem="xuW-sj-56q" firstAttribute="top" secondItem="Vg2-Ns-08y" secondAttribute="bottom" constant="8" symbolic="YES" id="hf3-EA-XAi"/>
                             <constraint firstAttribute="centerX" secondItem="Vg2-Ns-08y" secondAttribute="centerX" id="oVT-CI-BSn"/>
                             <constraint firstItem="xuW-sj-56q" firstAttribute="leading" secondItem="md2-y8-Bff" secondAttribute="leading" id="pWA-Pn-M8E"/>
                         </constraints>
@@ -414,6 +426,7 @@
                         <outlet property="input2" destination="nLn-mt-g4P" id="i6D-v3-E8Q"/>
                         <outlet property="input3" destination="n2C-1o-aeS" id="KAU-xg-r3b"/>
                         <outlet property="input4" destination="S0g-mY-hz3" id="bhk-WR-ejD"/>
+                        <outlet property="minorNotificationLabel" destination="sYu-AW-8FV" id="QVl-8Q-Lk6"/>
                         <outlet property="notificationLabel" destination="wk3-NA-9Gy" id="yfB-16-kz9"/>
                     </connections>
                 </viewController>

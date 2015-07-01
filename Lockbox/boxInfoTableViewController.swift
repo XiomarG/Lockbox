@@ -163,6 +163,9 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         if myImage == nil {
             myImage = UIImage(named: "defaultKeyImage")
         }
+        // set button to round corner
+        self.setImageButton.layer.masksToBounds = true
+        self.setImageButton.layer.cornerRadius = self.setImageButton.bounds.width / CGFloat(8.0)
         setImageButton.setImage(myImage, forState: UIControlState.Normal)
         observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
     }

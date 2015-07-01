@@ -22,6 +22,7 @@ class LockboxViewController: UICollectionViewController {
     
     var dataFilePath : String?
     
+    var cellRadius = CGFloat()
     
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     private let reuseIdentifier = "lockboxCell"
@@ -132,6 +133,7 @@ class LockboxViewController: UICollectionViewController {
         
         var cellsize = cell.frame.size
         //cell.boxImage.frame.size = cell.frame.size
+        //cell.boxImage.layer.cornerRadius = 9
         tempImage = boxes[indexPath.row].icon
         if indexPath.row < boxes.count - 1 {
             if boxes[indexPath.row].icon != nil {
@@ -147,6 +149,8 @@ class LockboxViewController: UICollectionViewController {
             cell.boxImage.image = UIImage(named: "myAddIcon")
             //cell.backgroundColor = UIColor.redColor()
         }
+        cell.boxImage.layer.masksToBounds = true
+        cell.boxImage.layer.cornerRadius = self.cellRadius
         return cell
     }
 }
@@ -185,6 +189,7 @@ extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout 
         var size = collectionView.frame.size
         size.width = (size.width - sectionInsets.left - sectionInsets.right - minCellSpacing * 2) / 3
         size.height = size.width
+        self.cellRadius = size.width / CGFloat(8.0)
         return size
     }
     
