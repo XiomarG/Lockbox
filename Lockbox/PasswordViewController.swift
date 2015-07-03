@@ -19,11 +19,15 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet weak var minorNotificationLabel: UILabel!
     
+    @IBOutlet weak var inputBackgroundView: UIView!
     var thePassword = NSUserDefaults.standardUserDefaults().objectForKey("myPassword") as? [String]
     var tempPassword = ["","","",""]
     
     var textFields = [UITextField]()
     var controllerType : pwControllerType?
+    
+    var keyboardHeight : CGFloat?
+
     
     enum pwControllerType {
         case changePW
@@ -65,9 +69,32 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         self.minorNotificationLabel.textColor = UIColor.redColor()
         self.setNotificationLabel()
         self.minorNotificationLabel.text = ""
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
         input1.becomeFirstResponder()
+        //setView()
         
     }
+    override func viewDidAppear(animated: Bool) {
+        setView()
+    }
+    
+    private func setView() {
+        let viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
+        inputBackgroundView.addConstraint(viewHeightConstraint)
+
+    }
+    func keyboardShown(notification: NSNotification) {
+        let info  = notification.userInfo!
+        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
+        
+        let rawFrame = value.CGRectValue()
+        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
+        keyboardHeight = keyboardFrame.height
+        println("keyboardHeight: \(keyboardHeight)")
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -158,7 +185,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                             textFields[0].becomeFirstResponder()
                             self.controllerType = .setPW
                             self.setNotificationLabel()
-                            self.minorNotificationLabel.text = "Password is different from first setup"
+                            self.minorNotificationLabel.text = "Confimation Failed"
                         }
                     }
                     
