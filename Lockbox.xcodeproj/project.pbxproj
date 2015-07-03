@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D92918AE1B4602E300983209 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92918AD1B4602E300983209 /* SettingViewController.swift */; };
 		D94517951B33E1A600168CE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94517941B33E1A600168CE4 /* Images.xcassets */; };
 		D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94517961B33E1A600168CE4 /* LaunchScreen.xib */; };
 		D94517A41B33E1A600168CE4 /* LockboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517A31B33E1A600168CE4 /* LockboxTests.swift */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D92918AD1B4602E300983209 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D94517881B33E1A500168CE4 /* Lockbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D945178C1B33E1A500168CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94517941B33E1A600168CE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				D94517B21B33E41900168CE4 /* AppDelegate.swift */,
 				D94517BC1B34E0E800168CE4 /* LockboxMain.storyboard */,
+				D92918AD1B4602E300983209 /* SettingViewController.swift */,
 				D94517B11B33E41900168CE4 /* LockboxViewController.swift */,
 				D94517AD1B33E41900168CE4 /* LockboxViewCell.swift */,
 				D94517AE1B33E41900168CE4 /* boxInfoTableViewController.swift */,
@@ -269,6 +272,7 @@
 				D94517B51B33E41900168CE4 /* BoxInfoViewCell.swift in Sources */,
 				D94517B41B33E41900168CE4 /* boxInfoTableViewController.swift in Sources */,
 				D97B008D1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
+				D92918AE1B4602E300983209 /* SettingViewController.swift in Sources */,
 				D94517B71B33E41900168CE4 /* LockboxViewController.swift in Sources */,
 				D94517B61B33E41900168CE4 /* Lockbox.swift in Sources */,
 				D94517B31B33E41900168CE4 /* LockboxViewCell.swift in Sources */,

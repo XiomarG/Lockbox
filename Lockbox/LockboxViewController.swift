@@ -40,16 +40,6 @@ class LockboxViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.loadDataFromFile()
-        
-        
-        
-        // test for password view
-        let testPassword = false
-        
-        if testPassword {
-        let passwordViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
-        self.presentViewController(passwordViewController!, animated: true, completion: nil)
-        }
 
     }
     

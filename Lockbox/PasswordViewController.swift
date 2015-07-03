@@ -19,31 +19,37 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     
     @IBOutlet weak var minorNotificationLabel: UILabel!
     
-    var thePassword = ["1","2","3","4"]
+    var thePassword = NSUserDefaults.standardUserDefaults().objectForKey("myPassword") as? [String]
     var tempPassword = ["","","",""]
     
     var textFields = [UITextField]()
     var controllerType : pwControllerType?
     
     enum pwControllerType {
+        case changePW
         case setPW
         case confirmPW
         case checkPW
     }
     
     private func setNotificationLabel() {
-        switch self.controllerType! {
-        case .setPW:
-            self.notificationLabel.text = "Please Set Password"
-        case .confirmPW:
-            self.notificationLabel.text = "Please Confirm Password"
-        case .checkPW:
-            self.notificationLabel.text = "Please Input Password"
+        if self.controllerType != nil {
+            switch self.controllerType! {
+            case .changePW:
+                self.notificationLabel.text = "Please Input Old Password"
+            case .setPW:
+                self.notificationLabel.text = "Please Set Password"
+            case .confirmPW:
+                self.notificationLabel.text = "Please Confirm Password"
+            case .checkPW:
+                self.notificationLabel.text = "Please Input Password"
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.notificationLabel.text = ""
         self.textFields = [input1, input2, input3, input4]
         // Do any additional setup after loading the view.
         for index in 0 ... 3 {
@@ -53,8 +59,8 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
             textFields[index].keyboardType = UIKeyboardType.Default
             observePasswordInputs(textFields[index], index: index, textFields: textFields)
         }
-        self.controllerType = .checkPW
-        self.controllerType = .setPW
+        //self.controllerType = .checkPW
+        //self.controllerType = .setPW
         self.notificationLabel.textColor = UIColor.blueColor()
         self.minorNotificationLabel.textColor = UIColor.redColor()
         self.setNotificationLabel()
@@ -87,9 +93,6 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                 case 0,1,2 :
                     if count(textFields[index].text) == 1 {
                         textFields[index+1].becomeFirstResponder()
-//                        if self.controllerType == .checkPW {
-//                            self.notificationLabel.text = ""
-//                        }
                         self.minorNotificationLabel.text = ""
                         self.setNotificationLabel()
                     }
@@ -107,6 +110,24 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                             }
                             textFields[0].becomeFirstResponder()
                         }
+                    }
+                    else if self.controllerType == .changePW {
+                        if self.checkPassword() == true {
+                            self.controllerType = .setPW
+                            for aTextField in self.textFields {
+                                aTextField.text = ""
+                            }
+                            textFields[0].becomeFirstResponder()
+                            self.setNotificationLabel()
+                        } else {
+                            self.notificationLabel.text = "Password Incorrect"
+                            self.minorNotificationLabel.text = "Please Input Again"
+                            for aTextField in self.textFields {
+                                aTextField.text = ""
+                            }
+                            textFields[0].becomeFirstResponder()
+                        }
+
                     }
                         // set password
                     else if self.controllerType == .setPW {
@@ -126,8 +147,10 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                         }
                         if isSame {
                             self.thePassword = self.tempPassword
-                            theTextfield.resignFirstResponder()
-                            self.dismissViewControllerAnimated(true, completion: nil)
+                            NSUserDefaults.standardUserDefaults().setObject(self.thePassword, forKey: "myPassword")
+                            //theTextfield.resignFirstResponder()
+                            self.navigationController?.popViewControllerAnimated(true)
+                            
                         }  else {
                             for aTextField in self.textFields {
                                 aTextField.text = ""
@@ -148,7 +171,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     
     func checkPassword() -> Bool{
         for index in 0 ... 3 {
-            if textFields[index].text != thePassword[index]
+            if textFields[index].text != thePassword![index]
             { return false }
         }
         //self.resignFirstResponder()

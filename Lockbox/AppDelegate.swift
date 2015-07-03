@@ -27,11 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        let topController = topMostViewController()
-        let passwordViewController = topController.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
-        
-        topController.presentViewController(passwordViewController!, animated: true, completion: nil)
-        
+        if let isPassword = NSUserDefaults.standardUserDefaults().objectForKey("myPassword") as? [String] {
+            let topController = topMostViewController()
+            let passwordViewController = topController.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
+            passwordViewController?.controllerType = .checkPW
+            topController.presentViewController(passwordViewController!, animated: true, completion: nil)
+        }
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
