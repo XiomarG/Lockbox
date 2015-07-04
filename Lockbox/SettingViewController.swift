@@ -12,7 +12,15 @@ class SettingViewController: UIViewController {
 
     @IBOutlet weak var setPassword: UIButton!
     var password : [String]?
+    var cellPerRow = Int()
     
+    @IBOutlet weak var cellPerRowLabel: UILabel!
+    @IBOutlet weak var stepper: UIStepper!
+    @IBAction func stepperChanged(sender: UIStepper) {
+        cellPerRow = Int(sender.value)
+        cellPerRowLabel.text = "\(cellPerRow)"
+        println(cellPerRow)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         password = NSUserDefaults.standardUserDefaults().valueForKey("myPassword") as? [String]
@@ -22,13 +30,9 @@ class SettingViewController: UIViewController {
         } else {
             setPassword.setTitle("Set Password", forState: UIControlState.Normal)
         }
-
+        cellPerRow = NSUserDefaults.standardUserDefaults().objectForKey("cell per row") as? Int ?? 3
     }
-    
-//    override func viewDidAppear(animated: Bool) {
-//        a
-//        // Do any additional setup after loading the view.
-//    }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -112,12 +112,28 @@
                                     <segue destination="3yI-Vl-SJN" kind="show" identifier="setPW" id="EUT-Gw-c9S"/>
                                 </connections>
                             </button>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="QP1-Lp-d9x">
+                                <rect key="frame" x="253" y="304" width="94" height="29"/>
+                                <connections>
+                                    <action selector="stepperChanged:" destination="pqG-qT-8TS" eventType="valueChanged" id="UYl-fa-7XD"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okZ-sc-A1i">
+                                <rect key="frame" x="279" y="253" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="nyl-dD-Klg" firstAttribute="top" secondItem="KjW-wR-Sji" secondAttribute="bottom" constant="339" id="1Iv-SO-dQ5"/>
                             <constraint firstItem="cmO-1f-gEh" firstAttribute="top" secondItem="nyl-dD-Klg" secondAttribute="bottom" constant="211" id="3iJ-Hb-dNY"/>
+                            <constraint firstItem="QP1-Lp-d9x" firstAttribute="top" secondItem="okZ-sc-A1i" secondAttribute="bottom" constant="30" id="E5a-ti-xSz"/>
+                            <constraint firstItem="okZ-sc-A1i" firstAttribute="centerX" secondItem="QP1-Lp-d9x" secondAttribute="centerX" id="HHU-cW-tcm"/>
                             <constraint firstItem="nyl-dD-Klg" firstAttribute="centerX" secondItem="kgt-N6-DZf" secondAttribute="centerX" id="WBm-NK-gWy"/>
+                            <constraint firstItem="QP1-Lp-d9x" firstAttribute="centerX" secondItem="nyl-dD-Klg" secondAttribute="centerX" id="WT6-Pc-Bf9"/>
+                            <constraint firstItem="nyl-dD-Klg" firstAttribute="top" secondItem="QP1-Lp-d9x" secondAttribute="bottom" constant="8" symbolic="YES" id="gCs-rK-L5D"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -126,7 +142,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="cellPerRowLabel" destination="okZ-sc-A1i" id="0ea-nG-fOL"/>
                         <outlet property="setPassword" destination="nyl-dD-Klg" id="ngB-Rw-QwO"/>
+                        <outlet property="stepper" destination="QP1-Lp-d9x" id="zIT-No-zmD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejf-kc-aCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
