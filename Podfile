@@ -1,10 +1,11 @@
-# platform :ios, ‘8.3’
+platform :ios, '8.0'
+use_frameworks!
 
 target 'Lockbox' do
-  pod 'LXReorderableCollectionViewFlowLayout', ‘~> 0.1.1’
-end
-
-target 'LockboxTests' do
+    pod 'KeychainAccess', '~> 1.2.1'
 
 end
 
+target 'Lockbox' do
+
+end

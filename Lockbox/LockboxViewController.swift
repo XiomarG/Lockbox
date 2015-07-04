@@ -12,6 +12,10 @@ var imageSize : CGSize?
 var tempImage : UIImage?
 var tempAccount : Account?
 
+struct Constants {
+     static let APP_PASSWORD = "APP_PASSWORD"
+}
+
 class LockboxViewController: UICollectionViewController {
     
     
@@ -190,7 +194,6 @@ extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout 
     }
     
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, didEndDraggingItemAtIndexPath indexPath: NSIndexPath!) {
-        println("did end drag")
         NSKeyedArchiver.archiveRootObject(boxes, toFile: dataFilePath!)
     }
 /*

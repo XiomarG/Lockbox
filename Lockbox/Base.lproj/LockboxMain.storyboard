@@ -142,10 +142,10 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="HHU-cW-tcm"/>
-                                <exclude reference="E5a-ti-xSz"/>
-                                <exclude reference="WT6-Pc-Bf9"/>
                                 <exclude reference="1Iv-SO-dQ5"/>
                                 <exclude reference="gCs-rK-L5D"/>
+                                <exclude reference="E5a-ti-xSz"/>
+                                <exclude reference="WT6-Pc-Bf9"/>
                             </mask>
                         </variation>
                     </view>
@@ -413,7 +413,6 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="n2C-1o-aeS" firstAttribute="leading" secondItem="klS-cf-s8t" secondAttribute="trailing" constant="8" symbolic="YES" id="0e4-UF-EHr"/>
                                     <constraint firstItem="klS-cf-s8t" firstAttribute="leading" secondItem="nLn-mt-g4P" secondAttribute="trailing" constant="8" symbolic="YES" id="3rH-Z2-Ipb"/>
@@ -424,7 +423,6 @@
                                     <constraint firstItem="riC-08-dl3" firstAttribute="top" secondItem="klS-cf-s8t" secondAttribute="top" id="Scw-c9-yLe"/>
                                     <constraint firstItem="LTs-yh-E7X" firstAttribute="width" secondItem="ENg-Ib-c54" secondAttribute="width" id="SjE-NH-kWi"/>
                                     <constraint firstAttribute="trailing" secondItem="IGP-tK-Grr" secondAttribute="trailing" id="UpH-TQ-h0K"/>
-                                    <constraint firstAttribute="height" constant="276" id="Uud-Ru-a9X"/>
                                     <constraint firstItem="klS-cf-s8t" firstAttribute="width" secondItem="klS-cf-s8t" secondAttribute="height" id="ce5-e0-Y4Y"/>
                                     <constraint firstItem="LTs-yh-E7X" firstAttribute="top" secondItem="ENg-Ib-c54" secondAttribute="top" id="cxG-Q4-Jhu"/>
                                     <constraint firstItem="riC-08-dl3" firstAttribute="width" secondItem="klS-cf-s8t" secondAttribute="width" id="dXQ-3f-TaM"/>
@@ -445,11 +443,6 @@
                                     <constraint firstItem="LTs-yh-E7X" firstAttribute="centerY" secondItem="hXn-6Z-lOY" secondAttribute="centerY" id="yN2-PF-YYN"/>
                                     <constraint firstItem="nLn-mt-g4P" firstAttribute="leading" secondItem="ENg-Ib-c54" secondAttribute="trailing" constant="8" symbolic="YES" id="ywt-Hr-s23"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Uud-Ru-a9X"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-NA-9Gy">
                                 <rect key="frame" x="276" y="74" width="49" height="24"/>
@@ -477,7 +470,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultKeyImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="defaultKeyImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
                                 <rect key="frame" x="224" y="134" width="152" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vg2-Ns-08y" secondAttribute="height" id="EPD-m8-HlP"/>

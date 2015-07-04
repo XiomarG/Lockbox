@@ -12,6 +12,7 @@ class SettingViewController: UIViewController {
 
     @IBOutlet weak var setPassword: UIButton!
     var password : [String]?
+    var hasPassword : Bool?
     var cellPerRow = Int()
     
     let cellPerRowString = "Box/Row: "
@@ -25,18 +26,23 @@ class SettingViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        password = NSUserDefaults.standardUserDefaults().valueForKey("myPassword") as? [String]
-        
-        if password != nil {
-            setPassword.setTitle("Change Password", forState: UIControlState.Normal)
-        } else {
-            setPassword.setTitle("Set Password", forState: UIControlState.Normal)
-        }
+        //password = NSUserDefaults.standardUserDefaults().valueForKey("myPassword") as? [String]
+
         cellPerRow = NSUserDefaults.standardUserDefaults().objectForKey("cell per row") as? Int ?? 3
         stepper.value = Double(cellPerRow)
         cellPerRowLabel.text = cellPerRowString + "\(cellPerRow)"
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        hasPassword = NSUserDefaults.standardUserDefaults().valueForKey("has password") as? Bool
+        
+        if hasPassword != nil {
+            setPassword.setTitle("Change Password", forState: UIControlState.Normal)
+        } else {
+            setPassword.setTitle("Set Password", forState: UIControlState.Normal)
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,7 +54,7 @@ class SettingViewController: UIViewController {
         if segue.identifier == "setPW" {
             if let pwController = segue.destinationViewController as? PasswordViewController
             {
-                if password == nil {
+                if hasPassword == nil {
                     pwController.controllerType = .setPW
                 } else {
                     pwController.controllerType = .changePW

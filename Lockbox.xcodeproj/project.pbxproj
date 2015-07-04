@@ -19,10 +19,11 @@
 		D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517B21B33E41900168CE4 /* AppDelegate.swift */; };
 		D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D94517BC1B34E0E800168CE4 /* LockboxMain.storyboard */; };
 		D97B00871B3CCB70000302B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97B00861B3CCB70000302B2 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		D97B008D1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D97B008C1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.m */; };
 		D97B00911B3E1BA7000302B2 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B00901B3E1BA7000302B2 /* PasswordViewController.swift */; };
+		D98767C11B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D98767C01B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m */; };
 		D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B331B3A70520029DD3F /* defaultKeyImage.png */; };
 		D9942B361B3B8E070029DD3F /* myAddIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B351B3B8E070029DD3F /* myAddIcon.png */; };
+		FC52954D53217A5CFF9F5501 /* Pods_Lockbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C122C12C8D04B55274E1061A /* Pods_Lockbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A5AE48BE50E3157DFE9A4B5 /* Pods-Lockbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockbox.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockbox/Pods-Lockbox.release.xcconfig"; sourceTree = "<group>"; };
+		6A7CD3E06DA9CA4E0A24C258 /* Pods-Lockbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockbox/Pods-Lockbox.debug.xcconfig"; sourceTree = "<group>"; };
+		C122C12C8D04B55274E1061A /* Pods_Lockbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92918AD1B4602E300983209 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D94517881B33E1A500168CE4 /* Lockbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D945178C1B33E1A500168CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,9 +57,9 @@
 		D94517BD1B34E0E800168CE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LockboxMain.storyboard; sourceTree = "<group>"; };
 		D97B00861B3CCB70000302B2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D97B008A1B3CCBD4000302B2 /* Lockbox-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Lockbox-Bridging-Header.h"; sourceTree = "<group>"; };
-		D97B008B1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
-		D97B008C1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		D97B00901B3E1BA7000302B2 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		D98767BF1B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXReorderableCollectionViewFlowLayout.h; path = Library/LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		D98767C01B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXReorderableCollectionViewFlowLayout.m; path = Library/LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		D9942B331B3A70520029DD3F /* defaultKeyImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultKeyImage.png; sourceTree = "<group>"; };
 		D9942B351B3B8E070029DD3F /* myAddIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myAddIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D97B00871B3CCB70000302B2 /* QuartzCore.framework in Frameworks */,
+				FC52954D53217A5CFF9F5501 /* Pods_Lockbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +84,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0560FBD118608B92D58FE642 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C122C12C8D04B55274E1061A /* Pods_Lockbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		228F098AE71BD6717267584B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A7CD3E06DA9CA4E0A24C258 /* Pods-Lockbox.debug.xcconfig */,
+				5A5AE48BE50E3157DFE9A4B5 /* Pods-Lockbox.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D945177F1B33E1A500168CE4 = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +108,8 @@
 				D94517891B33E1A500168CE4 /* Products */,
 				D97B00881B3CCB76000302B2 /* Framework */,
 				D94517A01B33E1A600168CE4 /* LockboxTests */,
+				228F098AE71BD6717267584B /* Pods */,
+				0560FBD118608B92D58FE642 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -156,8 +180,8 @@
 		D97B00891B3CCBA2000302B2 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				D97B008B1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.h */,
-				D97B008C1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.m */,
+				D98767BF1B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.h */,
+				D98767C01B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m */,
 				D97B008A1B3CCBD4000302B2 /* Lockbox-Bridging-Header.h */,
 			);
 			name = Library;
@@ -171,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D94517A71B33E1A600168CE4 /* Build configuration list for PBXNativeTarget "Lockbox" */;
 			buildPhases = (
+				C37295005EEF16FF556BE408 /* Check Pods Manifest.lock */,
 				D94517841B33E1A500168CE4 /* Sources */,
 				D94517851B33E1A500168CE4 /* Frameworks */,
 				D94517861B33E1A500168CE4 /* Resources */,
+				D48EFF91656470B53632DA07 /* Embed Pods Frameworks */,
+				451958EB778B9E0F23A86F46 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -262,6 +289,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		451958EB778B9E0F23A86F46 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lockbox/Pods-Lockbox-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C37295005EEF16FF556BE408 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D48EFF91656470B53632DA07 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Lockbox/Pods-Lockbox-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D94517841B33E1A500168CE4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -270,8 +345,8 @@
 				D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */,
 				D97B00911B3E1BA7000302B2 /* PasswordViewController.swift in Sources */,
 				D94517B51B33E41900168CE4 /* BoxInfoViewCell.swift in Sources */,
+				D98767C11B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				D94517B41B33E41900168CE4 /* boxInfoTableViewController.swift in Sources */,
-				D97B008D1B3CCBD4000302B2 /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				D92918AE1B4602E300983209 /* SettingViewController.swift in Sources */,
 				D94517B71B33E41900168CE4 /* LockboxViewController.swift in Sources */,
 				D94517B61B33E41900168CE4 /* Lockbox.swift in Sources */,
@@ -404,6 +479,7 @@
 		};
 		D94517A81B33E1A600168CE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A7CD3E06DA9CA4E0A24C258 /* Pods-Lockbox.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -419,6 +495,7 @@
 		};
 		D94517A91B33E1A600168CE4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A5AE48BE50E3157DFE9A4B5 /* Pods-Lockbox.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
