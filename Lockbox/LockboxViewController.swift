@@ -40,6 +40,7 @@ class LockboxViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.loadDataFromFile()
+        self.collectionView?.reloadData()
 
     }
     
@@ -177,7 +178,8 @@ extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout 
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var size = collectionView.frame.size
-        size.width = (size.width - sectionInsets.left - sectionInsets.right - minCellSpacing * 2) / 3
+        //let cellPerRow =
+        size.width = (size.width - sectionInsets.left - sectionInsets.right - minCellSpacing * 2) / CGFloat(NSUserDefaults.standardUserDefaults().objectForKey("cell per row") as? Int ?? 3)
         size.height = size.width
         self.cellRadius = size.width / CGFloat(8.0)
         return size
