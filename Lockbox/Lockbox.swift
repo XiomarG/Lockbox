@@ -17,27 +17,13 @@ class  Account : NSObject, NSCoding {
         self.password = password
     }
     func encodeWithCoder(aCoder: NSCoder) {
-        
-        let nameData = (name as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
-        let encryptedName = testCrypt(nameData, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCEncrypt))
-        let passwordData = (name as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
-        let encryptedPassword = testCrypt(nameData, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCEncrypt))
-        
-        
-        aCoder.encodeObject(encryptedName, forKey: "NAME_KEY")
-        aCoder.encodeObject(encryptedPassword, forKey: "PASSWORD_KEY")
-        
-        
+        aCoder.encodeObject(name.encrypted(), forKey: "NAME_KEY")
+        aCoder.encodeObject(password.encrypted(), forKey: "PASSWORD_KEY")
     }
     required init(coder aDecoder: NSCoder) {
-        let encryptedNameData = aDecoder.decodeObjectForKey("NAME_KEY") as! NSData
-        let decryptedNameData = testCrypt(encryptedNameData, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCDecrypt)) as NSData!
-        let encryptedPasswordData = aDecoder.decodeObjectForKey("PASSWORD_KEY") as! NSData
-        let decryptedPasswordData = testCrypt(encryptedPasswordData, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCDecrypt)) as NSData!
-        name = NSString(data: decryptedNameData, encoding: NSUTF8StringEncoding) as! String
-        password = NSString(data: decryptedPasswordData, encoding: NSUTF8StringEncoding) as! String
+        name = (aDecoder.decodeObjectForKey("NAME_KEY") as! NSData).decrypted()
+        password = (aDecoder.decodeObjectForKey("PASSWORD_KEY") as! NSData).decrypted()
     }
-    
 }
 
 

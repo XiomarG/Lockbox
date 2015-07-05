@@ -49,3 +49,25 @@ func testCrypt(data: NSData, keyData: NSData, ivData: NSData, operation: CCOpera
     
     return cryptData;
 }
+
+extension String {
+    func encrypted() -> NSData {
+        let data = (self as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
+        let encryptedData = testCrypt(data, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCEncrypt))
+        return encryptedData!
+    }
+}
+
+extension NSData {
+    func decrypted() -> String {
+        let decryptedData = testCrypt(self, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCDecrypt)) as NSData!
+        return NSString(data: decryptedData, encoding: NSUTF8StringEncoding) as! String
+    }
+}
+
+
+//func encodeObjectEncrypted(thisCode: NSCoder, string: String, forKey: String) {
+//    let data = (string as NSString).dataUsingEncoding(NSUTF8StringEncoding) as NSData!
+//    let encryptedData = testCrypt(data, CCCParameter.keyData, CCCParameter.ivData, UInt32(kCCEncrypt))
+//    thisCoder.encodeObject(encryptedData, forKey: forKey)
+//}
