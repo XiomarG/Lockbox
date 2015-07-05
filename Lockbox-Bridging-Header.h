@@ -3,3 +3,4 @@
 //
 
 #import "LXReorderableCollectionViewFlowLayout.h"
+#import "CommonCrypto/CommonCrypto.h"

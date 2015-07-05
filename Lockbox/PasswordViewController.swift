@@ -46,7 +46,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         if self.controllerType != nil {
             switch self.controllerType! {
             case .changePW:
-                self.notificationLabel.text = "Please Input Old Password"
+                self.notificationLabel.text = "Please Input Current Password"
             case .setPW:
                 self.notificationLabel.text = "Please Set Password"
             case .confirmPW:
@@ -212,15 +212,5 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         //self.resignFirstResponder()
         return true
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
