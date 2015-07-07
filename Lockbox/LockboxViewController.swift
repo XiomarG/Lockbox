@@ -141,7 +141,7 @@ class LockboxViewController: UICollectionViewController {
             }
             //cell.backgroundColor = UIColor.blackColor()
         } else {
-            cell.boxImage.image = UIImage(named: "myAddIcon")
+            cell.boxImage.image = UIImage(named: "addIcon")
             //cell.backgroundColor = UIColor.redColor()
         }
         cell.boxImage.layer.masksToBounds = true

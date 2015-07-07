@@ -151,6 +151,10 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setView()
+    }
+    
+    func setView() {
         appName.text = myName
         appName.sizeToFit()
         if myName != nil {
@@ -160,14 +164,17 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         } else {
             appName.borderStyle = UITextBorderStyle.RoundedRect
         }
-        if myImage == nil {
-            myImage = UIImage(named: "defaultKeyImage")
-        }
+
         // set button to round corner
         self.setImageButton.layer.masksToBounds = true
         self.setImageButton.layer.cornerRadius = self.setImageButton.bounds.width / CGFloat(8.0)
-        setImageButton.setImage(myImage, forState: UIControlState.Normal)
+        if myImage == nil {
+            setImageButton.setImage(UIImage(named: "defaultKeyImage") , forState: UIControlState.Normal)
+        } else {
+            setImageButton.setImage(myImage, forState: UIControlState.Normal)
+        }
         observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
+
     }
     
     func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath?, type : textFieldType) {

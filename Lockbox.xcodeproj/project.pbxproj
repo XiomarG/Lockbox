@@ -21,8 +21,6 @@
 		D97B00871B3CCB70000302B2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97B00861B3CCB70000302B2 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D97B00911B3E1BA7000302B2 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97B00901B3E1BA7000302B2 /* PasswordViewController.swift */; };
 		D98767C11B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = D98767C01B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m */; };
-		D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B331B3A70520029DD3F /* defaultKeyImage.png */; };
-		D9942B361B3B8E070029DD3F /* myAddIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D9942B351B3B8E070029DD3F /* myAddIcon.png */; };
 		D9B84D4F1B48D0B0005E0E71 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9B84D4E1B48D0B0005E0E71 /* Security.framework */; };
 		D9B84D511B48D10F005E0E71 /* CommonCryptoCryptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B84D501B48D10F005E0E71 /* CommonCryptoCryptor.swift */; };
 		FC52954D53217A5CFF9F5501 /* Pods_Lockbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C122C12C8D04B55274E1061A /* Pods_Lockbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -62,8 +60,6 @@
 		D97B00901B3E1BA7000302B2 /* PasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		D98767BF1B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LXReorderableCollectionViewFlowLayout.h; path = Library/LXReorderableCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		D98767C01B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LXReorderableCollectionViewFlowLayout.m; path = Library/LXReorderableCollectionViewFlowLayout.m; sourceTree = "<group>"; };
-		D9942B331B3A70520029DD3F /* defaultKeyImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultKeyImage.png; sourceTree = "<group>"; };
-		D9942B351B3B8E070029DD3F /* myAddIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myAddIcon.png; sourceTree = "<group>"; };
 		D9B84D4E1B48D0B0005E0E71 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D9B84D501B48D10F005E0E71 /* CommonCryptoCryptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CommonCryptoCryptor.swift; path = Lockbox/CommonCryptoCryptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,8 +145,6 @@
 		D945178B1B33E1A500168CE4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D9942B331B3A70520029DD3F /* defaultKeyImage.png */,
-				D9942B351B3B8E070029DD3F /* myAddIcon.png */,
 				D94517941B33E1A600168CE4 /* Images.xcassets */,
 				D94517961B33E1A600168CE4 /* LaunchScreen.xib */,
 				D945178C1B33E1A500168CE4 /* Info.plist */,
@@ -282,8 +276,6 @@
 				D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */,
 				D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */,
 				D94517951B33E1A600168CE4 /* Images.xcassets in Resources */,
-				D9942B341B3A70520029DD3F /* defaultKeyImage.png in Resources */,
-				D9942B361B3B8E070029DD3F /* myAddIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
