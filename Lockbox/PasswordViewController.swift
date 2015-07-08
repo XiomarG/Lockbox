@@ -86,23 +86,22 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         self.minorNotificationLabel.textColor = UIColor.redColor()
         self.setNotificationLabel()
         self.minorNotificationLabel.text = ""
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
-        
+//        NSNotificationCenter.defaultCenter().addObserver(self,
+//            selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
         self.logoImage.layer.masksToBounds = true
         self.logoImage.layer.cornerRadius = self.logoImage.bounds.width / CGFloat(8.0)
         input1.becomeFirstResponder()
 
     }
-    func keyboardShown(notification: NSNotification) {
-        let info  = notification.userInfo!
-        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
-        
-        let rawFrame = value.CGRectValue()
-        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
-        keyboardHeight = keyboardFrame.height
-        println("keyboardHeight: \(keyboardHeight)")
-    }
+//    func keyboardShown(notification: NSNotification) {
+//        let info  = notification.userInfo!
+//        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
+//        
+//        let rawFrame = value.CGRectValue()
+//        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
+//        keyboardHeight = keyboardFrame.height
+//        println("keyboardHeight: \(keyboardHeight)")
+//    }
     
     
 
