@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D92620FD1B4CABCF00375746 /* Ubuntu-B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D92620FB1B4CAA6300375746 /* Ubuntu-B.ttf */; };
+		D92620FE1B4CABD000375746 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D92620FC1B4CAA7600375746 /* Ubuntu-R.ttf */; };
+		D92621001B4CAE5F00375746 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92620FF1B4CAE5F00375746 /* UIHelper.swift */; };
 		D92918AE1B4602E300983209 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92918AD1B4602E300983209 /* SettingViewController.swift */; };
 		D94517951B33E1A600168CE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94517941B33E1A600168CE4 /* Images.xcassets */; };
 		D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94517961B33E1A600168CE4 /* LaunchScreen.xib */; };
@@ -40,6 +43,9 @@
 		5A5AE48BE50E3157DFE9A4B5 /* Pods-Lockbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockbox.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lockbox/Pods-Lockbox.release.xcconfig"; sourceTree = "<group>"; };
 		6A7CD3E06DA9CA4E0A24C258 /* Pods-Lockbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lockbox.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Lockbox/Pods-Lockbox.debug.xcconfig"; sourceTree = "<group>"; };
 		C122C12C8D04B55274E1061A /* Pods_Lockbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lockbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92620FB1B4CAA6300375746 /* Ubuntu-B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-B.ttf"; sourceTree = "<group>"; };
+		D92620FC1B4CAA7600375746 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
+		D92620FF1B4CAE5F00375746 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		D92918AD1B4602E300983209 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D94517881B33E1A500168CE4 /* Lockbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D945178C1B33E1A500168CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,6 +151,8 @@
 		D945178B1B33E1A500168CE4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D92620FB1B4CAA6300375746 /* Ubuntu-B.ttf */,
+				D92620FC1B4CAA7600375746 /* Ubuntu-R.ttf */,
 				D94517941B33E1A600168CE4 /* Images.xcassets */,
 				D94517961B33E1A600168CE4 /* LaunchScreen.xib */,
 				D945178C1B33E1A500168CE4 /* Info.plist */,
@@ -184,6 +192,7 @@
 				D98767BF1B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.h */,
 				D98767C01B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m */,
 				D97B008A1B3CCBD4000302B2 /* Lockbox-Bridging-Header.h */,
+				D92620FF1B4CAE5F00375746 /* UIHelper.swift */,
 			);
 			name = Library;
 			path = ..;
@@ -273,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92620FD1B4CABCF00375746 /* Ubuntu-B.ttf in Resources */,
+				D92620FE1B4CABD000375746 /* Ubuntu-R.ttf in Resources */,
 				D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */,
 				D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */,
 				D94517951B33E1A600168CE4 /* Images.xcassets in Resources */,
@@ -344,6 +355,7 @@
 				D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */,
 				D97B00911B3E1BA7000302B2 /* PasswordViewController.swift in Sources */,
 				D94517B51B33E41900168CE4 /* BoxInfoViewCell.swift in Sources */,
+				D92621001B4CAE5F00375746 /* UIHelper.swift in Sources */,
 				D98767C11B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				D94517B41B33E41900168CE4 /* boxInfoTableViewController.swift in Sources */,
 				D92918AE1B4602E300983209 /* SettingViewController.swift in Sources */,

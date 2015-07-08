@@ -13,30 +13,31 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var setPassword: UIButton!
     var password : [String]?
     var hasPassword : Bool?
-    var cellPerRow = Int()
+    var boxPerRow = Int()
     
     let cellPerRowString = "Box/Row: "
     
-    @IBOutlet weak var cellPerRowLabel: UILabel!
+    @IBOutlet weak var boxPerRowLabel: UILabel!
+    @IBOutlet weak var boxPerRowNumber: UILabel!
     @IBOutlet weak var stepper: UIStepper!
     @IBAction func stepperChanged(sender: UIStepper) {
-        cellPerRow = Int(sender.value)
-        cellPerRowLabel.text = cellPerRowString + "\(cellPerRow)"
-        NSUserDefaults.standardUserDefaults().setObject(cellPerRow, forKey: "cell per row")
+        boxPerRow = Int(sender.value)
+        boxPerRowLabel.text = "\(boxPerRow)"
+        NSUserDefaults.standardUserDefaults().setObject(boxPerRow, forKey: "box per row")
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        //password = NSUserDefaults.standardUserDefaults().valueForKey("myPassword") as? [String]
-
-        cellPerRow = NSUserDefaults.standardUserDefaults().objectForKey("cell per row") as? Int ?? 3
-        stepper.value = Double(cellPerRow)
-        cellPerRowLabel.text = cellPerRowString + "\(cellPerRow)"
+        boxPerRowLabel.textColor = systemTextColor
+        boxPerRowNumber.textColor = systemTextColor
+        boxPerRow = NSUserDefaults.standardUserDefaults().objectForKey("box per row") as? Int ?? 3
+        stepper.value = Double(boxPerRow)
+        boxPerRowNumber.text = "\(boxPerRow)"
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         hasPassword = NSUserDefaults.standardUserDefaults().valueForKey("has password") as? Bool
-        
+        setPassword.toCustomize()
         if hasPassword != nil {
             setPassword.setTitle("Change Password", forState: UIControlState.Normal)
         } else {

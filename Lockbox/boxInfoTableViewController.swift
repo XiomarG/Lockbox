@@ -28,8 +28,13 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     var accounts = [Account]()
     var isNew = false
     
-    private var isNewAccountTrigger = false
     
+    @IBOutlet weak var addAcountButton: UIButton!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var appName: UITextField!
+    
+    
+    private var isNewAccountTrigger = false
     
     enum textFieldType {
         case appName
@@ -39,8 +44,54 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     
     static let appNameFontSize = CGFloat(20)
     
+    // MARK: UI Initialization
     
-    @IBOutlet weak var appName: UITextField!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setView()
+    }
+    
+    func setView() {
+        appName.text = myName
+        appName.sizeToFit()
+        appName.textColor = systemTextColor
+        if myName != nil && myName != ""    {
+            appName.borderStyle = UITextBorderStyle.None
+            appName.font = UIFont(name: "Ubuntu", size: 30.0)
+            appName.minimumFontSize = 5.0
+        } else {
+            appName.borderStyle = UITextBorderStyle.RoundedRect
+            appName.font = UIFont(name: "Ubuntu", size: 12.0)
+        }
+        appName.autocorrectionType = UITextAutocorrectionType.No
+        // set button to round corner
+        self.setImageButton.layer.masksToBounds = true
+        self.setImageButton.layer.cornerRadius = self.setImageButton.bounds.width / CGFloat(8.0)
+        if myImage == nil {
+            setImageButton.setImage(UIImage(named: "defaultKeyImage") , forState: UIControlState.Normal)
+        } else {
+            setImageButton.setImage(myImage, forState: UIControlState.Normal)
+        }
+        observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
+        
+        addAcountButton.toCustomize()
+        //deleteButton.toCustomize()
+    }
+    
+    func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath?, type : textFieldType) {
+        let center = NSNotificationCenter.defaultCenter()
+        let queue = NSOperationQueue.mainQueue()
+        center.addObserverForName(UITextFieldTextDidChangeNotification,
+            object: theTextfield,
+            queue: queue) { _ in
+                switch type {
+                case .appName: self.myName = theTextfield.text
+                case .accountName: self.accounts[theIndexPath!.row].name = theTextfield.text
+                case .password: self.accounts[theIndexPath!.row].password = theTextfield.text
+                }
+        }
+    }
+
     
     // MARK: - Set App Image
     
@@ -103,14 +154,25 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     
 
     
-    // MARK: - add new account
+    // MARK: - User Interaction
     
     @IBAction func addAccount(sender: UIButton) {
         accounts.append(Account(name:"", password: ""))
         tableView.reloadData()
         isNewAccountTrigger = true
     }
-    // MARK: - send data back
+
+    @IBAction func deleteApp(sender: AnyObject) {
+        var alert = UIAlertController(title: "Ready to delete this app?", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Destructive, handler: {
+            _ in
+            self.accounts.removeAll(keepCapacity: false)
+            self.delegate?.detailDidFinish(self, newAccounts: self.accounts, newAppName: self.myName, newAppIcon: self.myImage, checkNew: self.isNew)
+        }))
+        
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     @IBAction func saveChange(sender: UIBarButtonItem) {
         
@@ -127,6 +189,8 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         }
         
     }
+    
+    
     
     private func checkAccounts() -> Bool {
         // used to rearrange accounts incase certain cell is empty
@@ -149,48 +213,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         return true
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setView()
-    }
     
-    func setView() {
-        appName.text = myName
-        appName.sizeToFit()
-        if myName != nil {
-            appName.borderStyle = UITextBorderStyle.None
-            appName.font = appName.font.fontWithSize(20)
-            appName.textColor = UIColor.blueColor()
-        } else {
-            appName.borderStyle = UITextBorderStyle.RoundedRect
-        }
-
-        // set button to round corner
-        self.setImageButton.layer.masksToBounds = true
-        self.setImageButton.layer.cornerRadius = self.setImageButton.bounds.width / CGFloat(8.0)
-        if myImage == nil {
-            setImageButton.setImage(UIImage(named: "defaultKeyImage") , forState: UIControlState.Normal)
-        } else {
-            setImageButton.setImage(myImage, forState: UIControlState.Normal)
-        }
-        observeTextFields(appName, theIndexPath: nil, type: textFieldType.appName)
-
-    }
-    
-    func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath?, type : textFieldType) {
-        let center = NSNotificationCenter.defaultCenter()
-        let queue = NSOperationQueue.mainQueue()
-        center.addObserverForName(UITextFieldTextDidChangeNotification,
-            object: theTextfield,
-            queue: queue) { _ in
-                switch type {
-                case .appName: self.myName = theTextfield.text
-                case .accountName: self.accounts[theIndexPath!.row].name = theTextfield.text
-                case .password: self.accounts[theIndexPath!.row].password = theTextfield.text
-                }
-        }
-    }
-
 
     // MARK: - Table view data source
 
@@ -213,6 +236,8 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         cell.detailInfo = accounts[indexPath.row]
         cell.accountInfo.text = cell.detailInfo?.name
         cell.passwordInfo.text = cell.detailInfo?.password
+        cell.accountInfo.autocorrectionType = UITextAutocorrectionType.No
+        cell.passwordInfo.autocorrectionType = UITextAutocorrectionType.No
         observeTextFields(cell.accountInfo, theIndexPath: indexPath, type: textFieldType.accountName)
         observeTextFields(cell.passwordInfo, theIndexPath: indexPath, type: textFieldType.password)
         if self.isNew {

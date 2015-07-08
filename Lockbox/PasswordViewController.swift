@@ -15,6 +15,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var input2: UITextField!
     @IBOutlet weak var input3: UITextField!
     @IBOutlet weak var input4: UITextField!
+    @IBOutlet weak var logoImage: UIImageView!
     
     @IBOutlet weak var notificationLabel: UILabel!
     
@@ -59,6 +60,17 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setView()
+        
+    }
+//    override func viewDidAppear(animated: Bool) {
+//        setView()
+//    }
+    
+    private func setView() {
+        //let viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
+        //inputBackgroundView.addConstraint(viewHeightConstraint)
         self.thePassword = self.keychain[string: Constants.APP_PASSWORD]
         self.notificationLabel.text = ""
         self.textFields = [input1, input2, input3, input4]
@@ -70,23 +82,16 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
             textFields[index].keyboardType = UIKeyboardType.Default
             observePasswordInputs(textFields[index], index: index, textFields: textFields)
         }
-        self.notificationLabel.textColor = UIColor.blueColor()
+        self.notificationLabel.textColor = systemTextColor
         self.minorNotificationLabel.textColor = UIColor.redColor()
         self.setNotificationLabel()
         self.minorNotificationLabel.text = ""
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
-        input1.becomeFirstResponder()
-        //setView()
         
-    }
-    override func viewDidAppear(animated: Bool) {
-        setView()
-    }
-    
-    private func setView() {
-        let viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
-        inputBackgroundView.addConstraint(viewHeightConstraint)
+        self.logoImage.layer.masksToBounds = true
+        self.logoImage.layer.cornerRadius = self.logoImage.bounds.width / CGFloat(8.0)
+        input1.becomeFirstResponder()
 
     }
     func keyboardShown(notification: NSNotification) {

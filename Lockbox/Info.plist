@@ -26,6 +26,11 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LockboxMain</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Ubuntu-R.ttf</string>
+		<string>Ubuntu-B.ttf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
