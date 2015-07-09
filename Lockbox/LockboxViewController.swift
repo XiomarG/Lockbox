@@ -18,35 +18,52 @@ struct Constants {
 
 class LockboxViewController: UICollectionViewController {
     
-    
 
-    
     var boxes = [Lockbox]()
     var selectedBoxIndex : Int = 0
-    
+    var backImageView = UIImageView()
+
     var dataFilePath : String?
     
     var cellRadius = CGFloat()
+    var isFirstLaunch = true
     
     private let sectionInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     private let reuseIdentifier = "lockboxCell"
     private let minCellSpacing = CGFloat(0.0)
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //loadPassworkd()
+        self.initBackImageView(backImageView)
         if self.loadDataFromFile() == false
         {
             //initializeTestData()
             addEmptyBox()
         }
+
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        //loadPassworkd()
         self.loadDataFromFile()
         self.collectionView?.reloadData()
-
+        self.loadBackImageView(backImageView)
     }
+    override func viewDidAppear(animated: Bool) {
+        if isFirstLaunch {
+            loadPassworkd()
+            isFirstLaunch = false
+        }
+    }
+    func loadPassworkd() {
+        if let hasPassword = NSUserDefaults.standardUserDefaults().objectForKey("has password") as? Bool {
+            let passwordViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
+            passwordViewController?.controllerType = .checkPW
+            self.view.window!.rootViewController!.presentViewController(passwordViewController!, animated: true, completion: nil)
+        }
+    }
+
     
     private func addEmptyBox() {
         boxes.append(Lockbox(accountName: "", password: ""))

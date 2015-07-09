@@ -22,6 +22,9 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var minorNotificationLabel: UILabel!
     
     @IBOutlet weak var inputBackgroundView: UIView!
+    
+    var backImageView = UIImageView()
+
     //var thePassword = NSUserDefaults.standardUserDefaults().objectForKey("myPassword") as? [String]
     
     var thePassword : String?
@@ -60,13 +63,11 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.initBackImageView(backImageView)
+        self.loadBackImageView(backImageView)
         setView()
-        
     }
-//    override func viewDidAppear(animated: Bool) {
-//        setView()
-//    }
+
     
     private func setView() {
         //let viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)

@@ -11,6 +11,9 @@
 		D92620FE1B4CABD000375746 /* Ubuntu-R.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D92620FC1B4CAA7600375746 /* Ubuntu-R.ttf */; };
 		D92621001B4CAE5F00375746 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92620FF1B4CAE5F00375746 /* UIHelper.swift */; };
 		D92918AE1B4602E300983209 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92918AD1B4602E300983209 /* SettingViewController.swift */; };
+		D93799DE1B4E043200E8702D /* BackgroundSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93799DD1B4E043200E8702D /* BackgroundSwitchCell.swift */; };
+		D93799E11B4E047800E8702D /* BackgroundSwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D93799E01B4E047800E8702D /* BackgroundSwitchCell.xib */; };
+		D93799E31B4E064F00E8702D /* AddCollectionview.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93799E21B4E064F00E8702D /* AddCollectionview.swift */; };
 		D94517951B33E1A600168CE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D94517941B33E1A600168CE4 /* Images.xcassets */; };
 		D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D94517961B33E1A600168CE4 /* LaunchScreen.xib */; };
 		D94517A41B33E1A600168CE4 /* LockboxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94517A31B33E1A600168CE4 /* LockboxTests.swift */; };
@@ -47,6 +50,9 @@
 		D92620FC1B4CAA7600375746 /* Ubuntu-R.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Ubuntu-R.ttf"; sourceTree = "<group>"; };
 		D92620FF1B4CAE5F00375746 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		D92918AD1B4602E300983209 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		D93799DD1B4E043200E8702D /* BackgroundSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundSwitchCell.swift; sourceTree = "<group>"; };
+		D93799E01B4E047800E8702D /* BackgroundSwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BackgroundSwitchCell.xib; sourceTree = "<group>"; };
+		D93799E21B4E064F00E8702D /* AddCollectionview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCollectionview.swift; sourceTree = "<group>"; };
 		D94517881B33E1A500168CE4 /* Lockbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lockbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D945178C1B33E1A500168CE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D94517941B33E1A600168CE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -109,6 +115,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D93799DF1B4E044A00E8702D /* SwitchBackground */ = {
+			isa = PBXGroup;
+			children = (
+				D93799E01B4E047800E8702D /* BackgroundSwitchCell.xib */,
+				D93799DD1B4E043200E8702D /* BackgroundSwitchCell.swift */,
+				D93799E21B4E064F00E8702D /* AddCollectionview.swift */,
+			);
+			name = SwitchBackground;
+			sourceTree = "<group>";
+		};
 		D945177F1B33E1A500168CE4 = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +158,7 @@
 				D94517AF1B33E41900168CE4 /* BoxInfoViewCell.swift */,
 				D97B00901B3E1BA7000302B2 /* PasswordViewController.swift */,
 				D94517B01B33E41900168CE4 /* Lockbox.swift */,
+				D93799DF1B4E044A00E8702D /* SwitchBackground */,
 				D945178B1B33E1A500168CE4 /* Supporting Files */,
 				D97B00891B3CCBA2000302B2 /* Library */,
 			);
@@ -285,6 +302,7 @@
 				D92620FD1B4CABCF00375746 /* Ubuntu-B.ttf in Resources */,
 				D92620FE1B4CABD000375746 /* Ubuntu-R.ttf in Resources */,
 				D94517BE1B34E0E800168CE4 /* LockboxMain.storyboard in Resources */,
+				D93799E11B4E047800E8702D /* BackgroundSwitchCell.xib in Resources */,
 				D94517981B33E1A600168CE4 /* LaunchScreen.xib in Resources */,
 				D94517951B33E1A600168CE4 /* Images.xcassets in Resources */,
 			);
@@ -355,6 +373,7 @@
 				D94517B81B33E41900168CE4 /* AppDelegate.swift in Sources */,
 				D97B00911B3E1BA7000302B2 /* PasswordViewController.swift in Sources */,
 				D94517B51B33E41900168CE4 /* BoxInfoViewCell.swift in Sources */,
+				D93799E31B4E064F00E8702D /* AddCollectionview.swift in Sources */,
 				D92621001B4CAE5F00375746 /* UIHelper.swift in Sources */,
 				D98767C11B4881F4002D297D /* LXReorderableCollectionViewFlowLayout.m in Sources */,
 				D94517B41B33E41900168CE4 /* boxInfoTableViewController.swift in Sources */,
@@ -363,6 +382,7 @@
 				D94517B61B33E41900168CE4 /* Lockbox.swift in Sources */,
 				D94517B31B33E41900168CE4 /* LockboxViewCell.swift in Sources */,
 				D9B84D511B48D10F005E0E71 /* CommonCryptoCryptor.swift in Sources */,
+				D93799DE1B4E043200E8702D /* BackgroundSwitchCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

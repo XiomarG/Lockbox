@@ -11,5 +11,6 @@ import UIKit
 class LockboxViewCell: UICollectionViewCell {
     
     @IBOutlet weak var boxImage: UIImageView!
+
     
 }

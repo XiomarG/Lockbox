@@ -11,6 +11,11 @@ import UIKit
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var setPassword: UIButton!
+    
+    var switchCollectionView : UICollectionView?
+    let reuseIdentifier = "Switch Cell"
+    var candidateImages = [UIImage?]()
+    
     var password : [String]?
     var hasPassword : Bool?
     var boxPerRow = Int()
@@ -27,11 +32,42 @@ class SettingViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadCandidates()
         boxPerRowLabel.textColor = systemTextColor
         boxPerRowNumber.textColor = systemTextColor
         boxPerRow = NSUserDefaults.standardUserDefaults().objectForKey("box per row") as? Int ?? 3
         stepper.value = Double(boxPerRow)
         boxPerRowNumber.text = "\(boxPerRow)"
+        addCollectionView()
+    }
+    func loadCandidates() {
+        var firstItem = backgroundImages.first
+        var lastItem = backgroundImages.last
+        
+        candidateImages = backgroundImages
+        
+        candidateImages.insert(lastItem!, atIndex: 0)
+        candidateImages.append(firstItem!)
+    }
+    
+    
+    func addCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = self.view.bounds.size
+        layout.minimumInteritemSpacing = CGFloat(0)
+        layout.minimumLineSpacing = CGFloat(0)
+        layout.scrollDirection = UICollectionViewScrollDirection.Horizontal
+        self.automaticallyAdjustsScrollViewInsets = false
+        switchCollectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
+        switchCollectionView!.dataSource = self
+        switchCollectionView!.delegate = self
+        switchCollectionView?.registerNib(UINib(nibName: "BackgroundSwitchCell", bundle: nil), forCellWithReuseIdentifier: reuseIdentifier)
+        switchCollectionView?.pagingEnabled = true
+        switchCollectionView?.backgroundColor = UIColor.whiteColor()
+        switchCollectionView?.showsHorizontalScrollIndicator = false
+        self.view.addSubview(switchCollectionView!)
+        self.view.sendSubviewToBack(switchCollectionView!)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +79,11 @@ class SettingViewController: UIViewController {
         } else {
             setPassword.setTitle("Set Password", forState: UIControlState.Normal)
         }
+        switchCollectionView!.scrollToItemAtIndexPath(NSIndexPath(forItem: backgroundImageIndex + 1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        NSUserDefaults.standardUserDefaults().setInteger(backgroundImageIndex, forKey: "Background Image Index")
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,15 +105,4 @@ class SettingViewController: UIViewController {
             self.navigationController?.navigationBar.topItem?.title = "Cancel"
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

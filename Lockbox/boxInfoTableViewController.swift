@@ -22,7 +22,8 @@ protocol BoxInfoTableViewControllerDelegate {
 class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var delegate : BoxInfoTableViewControllerDelegate? = nil
-    
+    var backImageView = UIImageView()
+
     var myName : String?
     var myImage : UIImage?
     var accounts = [Account]()
@@ -49,6 +50,12 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
+        self.initBackImageView(backImageView)
+
+    }
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.loadBackImageView(backImageView)
     }
     
     func setView() {
@@ -111,7 +118,6 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel)
             {    _ -> Void in
-                println("Cancelled")
             }
             
             optionMenu.addAction(fromCamera)

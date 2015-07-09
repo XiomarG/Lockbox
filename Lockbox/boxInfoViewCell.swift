@@ -21,6 +21,7 @@ class boxInfoViewCell: UITableViewCell, UITextFieldDelegate {
         passwordInfo.text = detailInfo?.password
         accountInfo.delegate = self
         passwordInfo.delegate = self
+        self.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
     // MARK: - Text field delegate
