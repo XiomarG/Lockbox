@@ -10,7 +10,10 @@ import Foundation
 
 let systemTextColor = UIColor(red: 0, green: 122.0/255.0, blue: 1, alpha: 1)
 var backgroundImageIndex = 0
-var backgroundImages = [UIImage(named: "background0"), UIImage(named: "background1"),UIImage(named: "background2"), UIImage(named: "background3"), nil]
+//var backgroundImages = [UIImage(named: "background0"), UIImage(named: "background1"),UIImage(named: "background2"), UIImage(named: "background3"), UIImage(named: "background4"),nil]
+var backgroundImages = [UIImage?]()
+
+
 
 extension UIButton {
     
@@ -34,6 +37,7 @@ extension UIViewController {
         backImageView.frame = self.view.frame
     }
     func loadBackImageView(backImageView : UIImageView) {
+        
         backImageView.image = backgroundImages[backgroundImageIndex]
         self.view.addSubview(backImageView)
         self.view.sendSubviewToBack(backImageView)

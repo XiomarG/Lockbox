@@ -64,6 +64,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initBackImageView(backImageView)
+        //self.view.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
         self.loadBackImageView(backImageView)
         setView()
     }

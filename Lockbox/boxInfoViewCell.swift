@@ -24,6 +24,11 @@ class boxInfoViewCell: UITableViewCell, UITextFieldDelegate {
         self.backgroundColor = UIColor(white: 1, alpha: 0.5)
     }
     
+//    deinit{
+//        NSNotificationCenter.defaultCenter().removeObserver(self.passwordInfo)
+//        NSNotificationCenter.defaultCenter().removeObserver(self.accountInfo)
+//    }
+    
     // MARK: - Text field delegate
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

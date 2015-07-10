@@ -17,6 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         backgroundImageIndex = NSUserDefaults.standardUserDefaults().integerForKey("Background Image Index")
+        var index = 0
+        while UIImage(named: "background\(index)") != nil {
+            backgroundImages.append(UIImage(named: "background\(index++)"))
+        }
+        
+        
         return true
     }
 

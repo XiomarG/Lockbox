@@ -50,12 +50,13 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         setView()
-        self.initBackImageView(backImageView)
+        tableView.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
+        //self.initBackImageView(backImageView)
 
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.loadBackImageView(backImageView)
+        //self.loadBackImageView(backImageView)
     }
     
     func setView() {
@@ -64,13 +65,14 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         appName.textColor = systemTextColor
         if myName != nil && myName != ""    {
             appName.borderStyle = UITextBorderStyle.None
-            appName.font = UIFont(name: "Ubuntu", size: 30.0)
+            appName.font = UIFont(name: "Ubuntu", size: 28.0)
             appName.minimumFontSize = 5.0
         } else {
             appName.borderStyle = UITextBorderStyle.RoundedRect
-            appName.font = UIFont(name: "Ubuntu", size: 12.0)
+            appName.font = UIFont(name: "Ubuntu", size: 20.0)
         }
         appName.autocorrectionType = UITextAutocorrectionType.No
+        appName.delegate = self
         // set button to round corner
         self.setImageButton.layer.masksToBounds = true
         self.setImageButton.layer.cornerRadius = self.setImageButton.bounds.width / CGFloat(8.0)
@@ -83,6 +85,11 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         
         addAcountButton.toCustomize()
         //deleteButton.toCustomize()
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func observeTextFields(theTextfield : UITextField, theIndexPath : NSIndexPath?, type : textFieldType) {
@@ -163,6 +170,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     // MARK: - User Interaction
     
     @IBAction func addAccount(sender: UIButton) {
+        self.resignFirstResponder()
         accounts.append(Account(name:"", password: ""))
         tableView.reloadData()
         isNewAccountTrigger = true
@@ -248,6 +256,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         observeTextFields(cell.passwordInfo, theIndexPath: indexPath, type: textFieldType.password)
         if self.isNew {
             cell.accountInfo.becomeFirstResponder()
+            self.isNew = false
         }
         if isNewAccountTrigger && indexPath.row == accounts.count-1 {
             cell.accountInfo.becomeFirstResponder()

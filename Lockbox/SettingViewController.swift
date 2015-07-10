@@ -27,7 +27,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var stepper: UIStepper!
     @IBAction func stepperChanged(sender: UIStepper) {
         boxPerRow = Int(sender.value)
-        boxPerRowLabel.text = "\(boxPerRow)"
+        boxPerRowNumber.text = "\(boxPerRow)"
         NSUserDefaults.standardUserDefaults().setObject(boxPerRow, forKey: "box per row")
     }
     override func viewDidLoad() {

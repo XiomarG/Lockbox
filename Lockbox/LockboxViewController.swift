@@ -35,7 +35,7 @@ class LockboxViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //loadPassworkd()
-        self.initBackImageView(backImageView)
+        //self.initBackImageView(backImageView)
         if self.loadDataFromFile() == false
         {
             //initializeTestData()
@@ -48,7 +48,7 @@ class LockboxViewController: UICollectionViewController {
         //loadPassworkd()
         self.loadDataFromFile()
         self.collectionView?.reloadData()
-        self.loadBackImageView(backImageView)
+        collectionView!.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
     }
     override func viewDidAppear(animated: Bool) {
         if isFirstLaunch {
@@ -98,11 +98,7 @@ class LockboxViewController: UICollectionViewController {
 
     
     private func initializeTestData() {
-        boxes.append(Lockbox(accountName: "111", password: "bbb"))
-        boxes.append(Lockbox(accountName: "222", password: "bbb"))
-        boxes.append(Lockbox(accountName: "333", password: "bbb"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
-        boxes.last?.accounts.append(Account(name: "sadds", password: "djsaf"))
+        boxes.append(Lockbox(accountName: "Sample Username", password: "Sample Password"))
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -200,7 +196,7 @@ extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         var size = collectionView.frame.size
         //let cellPerRow =
-        size.width = (size.width - sectionInsets.left - sectionInsets.right - minCellSpacing * 2) / CGFloat(NSUserDefaults.standardUserDefaults().objectForKey("cell per row") as? Int ?? 3)
+        size.width = (size.width - sectionInsets.left - sectionInsets.right - minCellSpacing * 2) / CGFloat(NSUserDefaults.standardUserDefaults().objectForKey("box per row") as? Int ?? 3)
         size.height = size.width
         self.cellRadius = size.width / CGFloat(8.0)
         return size
@@ -213,18 +209,6 @@ extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout 
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, didEndDraggingItemAtIndexPath indexPath: NSIndexPath!) {
         NSKeyedArchiver.archiveRootObject(boxes, toFile: dataFilePath!)
     }
-/*
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, didBeginDraggingItemAtIndexPath indexPath: NSIndexPath!) {
-        println("did begin drag")
-    }
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, willBeginDraggingItemAtIndexPath indexPath: NSIndexPath!) {
-        println("will begin drag")
-    }
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, willEndDraggingItemAtIndexPath indexPath: NSIndexPath!) {
-        println("did begin drag")
-    }
-    */
-    
 }
 
 extension LockboxViewController : BoxInfoTableViewControllerDelegate {
