@@ -52,6 +52,9 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         setView()
         tableView.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
         //self.initBackImageView(backImageView)
+        if isNew == true {
+            self.deleteButton.hidden = true
+        }
 
     }
     override func viewWillAppear(animated: Bool) {
@@ -255,8 +258,9 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         observeTextFields(cell.accountInfo, theIndexPath: indexPath, type: textFieldType.accountName)
         observeTextFields(cell.passwordInfo, theIndexPath: indexPath, type: textFieldType.password)
         if self.isNew {
-            cell.accountInfo.becomeFirstResponder()
-            self.isNew = false
+            //cell.accountInfo.becomeFirstResponder()
+            //self.isNew = false
+            isNewAccountTrigger = true
         }
         if isNewAccountTrigger && indexPath.row == accounts.count-1 {
             cell.accountInfo.becomeFirstResponder()

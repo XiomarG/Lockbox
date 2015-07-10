@@ -24,8 +24,6 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     @IBOutlet weak var inputBackgroundView: UIView!
     
     var backImageView = UIImageView()
-
-    //var thePassword = NSUserDefaults.standardUserDefaults().objectForKey("myPassword") as? [String]
     
     var thePassword : String?
     
@@ -44,12 +42,13 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         case setPW
         case confirmPW
         case checkPW
+        case removePW
     }
     
     private func setNotificationLabel() {
         if self.controllerType != nil {
             switch self.controllerType! {
-            case .changePW:
+            case .changePW, .removePW:
                 self.notificationLabel.text = "Please Input Current Password"
             case .setPW:
                 self.notificationLabel.text = "Please Set Password"
@@ -64,15 +63,13 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initBackImageView(backImageView)
-        //self.view.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
         self.loadBackImageView(backImageView)
         setView()
     }
 
     
     private func setView() {
-        //let viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
-        //inputBackgroundView.addConstraint(viewHeightConstraint)
+        
         self.thePassword = self.keychain[string: Constants.APP_PASSWORD]
         self.notificationLabel.text = ""
         self.textFields = [input1, input2, input3, input4]
@@ -88,24 +85,11 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         self.minorNotificationLabel.textColor = UIColor.redColor()
         self.setNotificationLabel()
         self.minorNotificationLabel.text = ""
-//        NSNotificationCenter.defaultCenter().addObserver(self,
-//            selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
         self.logoImage.layer.masksToBounds = true
         self.logoImage.layer.cornerRadius = self.logoImage.bounds.width / CGFloat(8.0)
         input1.becomeFirstResponder()
 
     }
-//    func keyboardShown(notification: NSNotification) {
-//        let info  = notification.userInfo!
-//        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
-//        
-//        let rawFrame = value.CGRectValue()
-//        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
-//        keyboardHeight = keyboardFrame.height
-//        println("keyboardHeight: \(keyboardHeight)")
-//    }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -149,6 +133,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                             textFields[0].becomeFirstResponder()
                         }
                     }
+                        // change password
                     else if self.controllerType == .changePW {
                         if self.comparePassword(self.thePassword!) == true {
                             self.controllerType = .setPW
@@ -165,7 +150,19 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                             }
                             textFields[0].becomeFirstResponder()
                         }
-
+                    }
+                    else if self.controllerType == .removePW {
+                        if self.comparePassword(self.thePassword!) == true {
+                            NSUserDefaults.standardUserDefaults().removeObjectForKey("has password")
+                            self.navigationController?.popViewControllerAnimated(true)
+                        } else {
+                            self.notificationLabel.text = "Password Incorrect"
+                            self.minorNotificationLabel.text = "Please Input Again"
+                            for aTextField in self.textFields {
+                                aTextField.text = ""
+                            }
+                            textFields[0].becomeFirstResponder()
+                        }
                     }
                         // set password
                     else if self.controllerType == .setPW {
@@ -183,11 +180,8 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                         var isSame = self.comparePassword(self.tempPassword)
                         if isSame {
                             self.thePassword = self.tempPassword
-                            //NSUserDefaults.standardUserDefaults().setObject(self.thePassword, forKey: "myPassword")
                             self.keychain[string: Constants.APP_PASSWORD] = self.thePassword
                             NSUserDefaults.standardUserDefaults().setObject(true, forKey: "has password")
-                            println("\(self.keychain)")
-                            //theTextfield.resignFirstResponder()
                             self.navigationController?.popViewControllerAnimated(true)
                             
                         }  else {
@@ -215,7 +209,6 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         }
         
         if inputPassword != password  { return false }
-        //self.resignFirstResponder()
         return true
     }
 

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Lockbox.xcodeproj">
+      location = "group:/Users/xungong/Documents/xcode/Lockbox/Lockbox.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

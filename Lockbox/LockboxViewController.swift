@@ -8,9 +8,6 @@
 
 import UIKit
 
-var imageSize : CGSize?
-var tempImage : UIImage?
-var tempAccount : Account?
 
 struct Constants {
      static let APP_PASSWORD = "APP_PASSWORD"
@@ -34,18 +31,15 @@ class LockboxViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loadPassworkd()
-        //self.initBackImageView(backImageView)
         if self.loadDataFromFile() == false
         {
-            //initializeTestData()
+            initializeTestData()
             addEmptyBox()
         }
 
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        //loadPassworkd()
         self.loadDataFromFile()
         self.collectionView?.reloadData()
         collectionView!.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
@@ -57,7 +51,7 @@ class LockboxViewController: UICollectionViewController {
         }
     }
     func loadPassworkd() {
-        if let hasPassword = NSUserDefaults.standardUserDefaults().objectForKey("has password") as? Bool {
+        if let hasPassword = NSUserDefaults.standardUserDefaults().objectForKey("has password") as? Bool  {
             let passwordViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
             passwordViewController?.controllerType = .checkPW
             self.view.window!.rootViewController!.presentViewController(passwordViewController!, animated: true, completion: nil)
@@ -107,8 +101,6 @@ class LockboxViewController: UICollectionViewController {
                 sdvc.delegate = self
 
                 sdvc.accounts = boxes[selectedBoxIndex].accounts
-                tempAccount = boxes[selectedBoxIndex].accounts[0]
-                tempAccount = sdvc.accounts[0]
                 sdvc.myName = boxes[selectedBoxIndex].appName
                 sdvc.myImage = boxes[selectedBoxIndex].icon
                 if selectedBoxIndex == boxes.count - 1 {
@@ -140,22 +132,14 @@ class LockboxViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! LockboxViewCell
         
         var cellsize = cell.frame.size
-        //cell.boxImage.frame.size = cell.frame.size
-        //cell.boxImage.layer.cornerRadius = 9
-        tempImage = boxes[indexPath.row].icon
         if indexPath.row < boxes.count - 1 {
             if boxes[indexPath.row].icon != nil {
                 cell.boxImage.image = boxes[indexPath.row].icon
-                imageSize = boxes[indexPath.row].icon!.size
-                imageSize = cell.boxImage.image!.size
-                //cell.boxImage.
             } else {
                 cell.boxImage.image = UIImage(named: "defaultKeyImage")
             }
-            //cell.backgroundColor = UIColor.blackColor()
         } else {
             cell.boxImage.image = UIImage(named: "addIcon")
-            //cell.backgroundColor = UIColor.redColor()
         }
         cell.boxImage.layer.masksToBounds = true
         cell.boxImage.layer.cornerRadius = self.cellRadius
@@ -213,12 +197,9 @@ extension LockboxViewController : LXReorderableCollectionViewDelegateFlowLayout 
 
 extension LockboxViewController : BoxInfoTableViewControllerDelegate {
     func detailDidFinish(controller: boxInfoTableViewController, newAccounts: [Account], newAppName: String?, newAppIcon: UIImage?, checkNew: Bool) {
-        imageSize = newAppIcon?.size
         boxes[selectedBoxIndex].appName = newAppName
         boxes[selectedBoxIndex].icon = newAppIcon
         boxes[selectedBoxIndex].accounts = newAccounts
-        tempImage = newAppIcon
-        imageSize = boxes[selectedBoxIndex].icon?.size
         if checkNew == true {
             addEmptyBox()
         }

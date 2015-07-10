@@ -41,7 +41,6 @@ func testCrypt(data: NSData, keyData: NSData, ivData: NSData, operation: CCOpera
     if UInt32(cryptStatus) == UInt32(kCCSuccess) {
         let x : Int = numBytesEncrypted
         cryptData.length = Int(numBytesEncrypted)
-        //println("cryptLength = \(numBytesEncrypted), cryptData = \(cryptData)")
         
     } else {
         println("Error: \(cryptStatus)")

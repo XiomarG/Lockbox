@@ -19,6 +19,7 @@
             <string>Ubuntu</string>
             <string>Ubuntu</string>
             <string>Ubuntu</string>
+            <string>Ubuntu</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -138,7 +139,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Box / Row" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIl-4h-cKB">
                                 <rect key="frame" x="220" y="114" width="160" height="40"/>
                                 <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="35"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okZ-sc-A1i">
@@ -149,7 +150,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe To Change Background" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bj5-gI-a4H">
                                 <rect key="frame" x="153" y="328" width="294" height="25"/>
                                 <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="22"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swipe-gesture" translatesAutoresizingMaskIntoConstraints="NO" id="B4o-hU-cA4">
@@ -159,6 +160,17 @@
                                     <constraint firstAttribute="width" constant="200" id="cZJ-rN-a04"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wG9-2d-X4Y">
+                                <rect key="frame" x="218" y="555" width="165" height="35"/>
+                                <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="20"/>
+                                <state key="normal" title="Remove Password">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="3yI-Vl-SJN" kind="show" identifier="removePW" id="lAU-ao-jrx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -178,7 +190,10 @@
                             <constraint firstItem="QP1-Lp-d9x" firstAttribute="centerX" secondItem="nyl-dD-Klg" secondAttribute="centerX" id="WT6-Pc-Bf9"/>
                             <constraint firstAttribute="centerX" secondItem="B4o-hU-cA4" secondAttribute="centerX" id="WpD-qU-EZ9"/>
                             <constraint firstItem="QP1-Lp-d9x" firstAttribute="centerY" secondItem="okZ-sc-A1i" secondAttribute="centerY" id="aOW-57-pjF"/>
+                            <constraint firstAttribute="centerX" secondItem="wG9-2d-X4Y" secondAttribute="centerX" id="bB7-2b-CpF"/>
+                            <constraint firstItem="cmO-1f-gEh" firstAttribute="top" secondItem="wG9-2d-X4Y" secondAttribute="bottom" constant="10" id="cP0-Ep-Wfp"/>
                             <constraint firstItem="nyl-dD-Klg" firstAttribute="top" secondItem="QP1-Lp-d9x" secondAttribute="bottom" constant="8" symbolic="YES" id="gCs-rK-L5D"/>
+                            <constraint firstItem="cmO-1f-gEh" firstAttribute="top" secondItem="nyl-dD-Klg" secondAttribute="bottom" constant="50" id="hBo-tI-FS9"/>
                             <constraint firstItem="okZ-sc-A1i" firstAttribute="top" secondItem="KjW-wR-Sji" secondAttribute="bottom" constant="50" id="iUV-tp-S7l"/>
                             <constraint firstAttribute="centerX" secondItem="EIl-4h-cKB" secondAttribute="centerX" id="sbw-xx-yWf"/>
                             <constraint firstItem="okZ-sc-A1i" firstAttribute="top" secondItem="EIl-4h-cKB" secondAttribute="bottom" constant="15" id="uQB-6W-tFg"/>
@@ -196,6 +211,7 @@
                                 <exclude reference="aOW-57-pjF"/>
                                 <exclude reference="1Iv-SO-dQ5"/>
                                 <exclude reference="gCs-rK-L5D"/>
+                                <exclude reference="3iJ-Hb-dNY"/>
                             </mask>
                         </variation>
                     </view>
@@ -203,6 +219,7 @@
                     <connections>
                         <outlet property="boxPerRowLabel" destination="EIl-4h-cKB" id="zvP-Av-RXV"/>
                         <outlet property="boxPerRowNumber" destination="okZ-sc-A1i" id="eiK-IF-Nou"/>
+                        <outlet property="removePassword" destination="wG9-2d-X4Y" id="suy-HI-JNi"/>
                         <outlet property="setPassword" destination="nyl-dD-Klg" id="ngB-Rw-QwO"/>
                         <outlet property="stepper" destination="QP1-Lp-d9x" id="zIT-No-zmD"/>
                     </connections>
@@ -654,4 +671,7 @@
         <image name="defaultKeyImage" width="300" height="300"/>
         <image name="swipe-gesture" width="299" height="199"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lAU-ao-jrx"/>
+    </inferredMetricsTieBreakers>
 </document>

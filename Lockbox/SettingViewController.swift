@@ -11,6 +11,7 @@ import UIKit
 class SettingViewController: UIViewController {
 
     @IBOutlet weak var setPassword: UIButton!
+    @IBOutlet weak var removePassword: UIButton!
     
     var switchCollectionView : UICollectionView?
     let reuseIdentifier = "Switch Cell"
@@ -43,9 +44,7 @@ class SettingViewController: UIViewController {
     func loadCandidates() {
         var firstItem = backgroundImages.first
         var lastItem = backgroundImages.last
-        
         candidateImages = backgroundImages
-        
         candidateImages.insert(lastItem!, atIndex: 0)
         candidateImages.append(firstItem!)
     }
@@ -76,8 +75,10 @@ class SettingViewController: UIViewController {
         setPassword.toCustomize()
         if hasPassword != nil {
             setPassword.setTitle("Change Password", forState: UIControlState.Normal)
+            removePassword.hidden = false
         } else {
             setPassword.setTitle("Set Password", forState: UIControlState.Normal)
+            removePassword.hidden = true
         }
         switchCollectionView!.scrollToItemAtIndexPath(NSIndexPath(forItem: backgroundImageIndex + 1, inSection: 0), atScrollPosition: UICollectionViewScrollPosition.Left, animated: true)
     }
@@ -85,12 +86,6 @@ class SettingViewController: UIViewController {
         super.viewWillDisappear(animated)
         NSUserDefaults.standardUserDefaults().setInteger(backgroundImageIndex, forKey: "Background Image Index")
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "setPW" {
@@ -101,6 +96,13 @@ class SettingViewController: UIViewController {
                 } else {
                     pwController.controllerType = .changePW
                 }
+            }
+            self.navigationController?.navigationBar.topItem?.title = "Cancel"
+        }
+        if segue.identifier == "removePW" {
+            if let pwController = segue.destinationViewController as? PasswordViewController
+            {
+                pwController.controllerType = .removePW
             }
             self.navigationController?.navigationBar.topItem?.title = "Cancel"
         }
