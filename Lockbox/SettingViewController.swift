@@ -39,6 +39,7 @@ class SettingViewController: UIViewController {
         boxPerRow = NSUserDefaults.standardUserDefaults().objectForKey("box per row") as? Int ?? 3
         stepper.value = Double(boxPerRow)
         boxPerRowNumber.text = "\(boxPerRow)"
+        //self.navigationController?.navigationBar.topItem?.title = "Cancel"
         addCollectionView()
     }
     func loadCandidates() {
@@ -97,14 +98,13 @@ class SettingViewController: UIViewController {
                     pwController.controllerType = .changePW
                 }
             }
-            self.navigationController?.navigationBar.topItem?.title = "Cancel"
         }
         if segue.identifier == "removePW" {
             if let pwController = segue.destinationViewController as? PasswordViewController
             {
                 pwController.controllerType = .removePW
             }
-            self.navigationController?.navigationBar.topItem?.title = "Cancel"
+
         }
     }
 }
