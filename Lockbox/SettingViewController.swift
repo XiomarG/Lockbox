@@ -39,8 +39,15 @@ class SettingViewController: UIViewController {
         boxPerRow = NSUserDefaults.standardUserDefaults().objectForKey("box per row") as? Int ?? 3
         stepper.value = Double(boxPerRow)
         boxPerRowNumber.text = "\(boxPerRow)"
+        self.view.bringSubviewToFront(setPassword)
         //self.navigationController?.navigationBar.topItem?.title = "Cancel"
         addCollectionView()
+        
+        // debug for setPassword untouchable in 3.5" screen
+        
+        println(self.view.frame)
+        println(self.view.bounds)
+        println(self.setPassword.frame)
     }
     func loadCandidates() {
         var firstItem = backgroundImages.first
