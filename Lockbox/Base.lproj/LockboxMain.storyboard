@@ -45,7 +45,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="400" height="400"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uqE-Fa-O6L">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uqE-Fa-O6L">
                                             <rect key="frame" x="8" y="8" width="384" height="384"/>
                                         </imageView>
                                     </subviews>
@@ -297,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ejf-kc-aCu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1934" y="-284"/>
+            <point key="canvasLocation" x="2002" y="-284"/>
         </scene>
         <!--Box Info Table View Controller-->
         <scene sceneID="Wrg-bY-9dR">
@@ -473,7 +473,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8j-rM-h5j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1958" y="380"/>
+            <point key="canvasLocation" x="2002" y="385"/>
         </scene>
         <!--Password View Controller-->
         <scene sceneID="UbO-ql-WFj">
@@ -487,8 +487,8 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xuW-sj-56q">
-                                <rect key="frame" x="0.0" y="294" width="600" height="306"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuW-sj-56q">
+                                <rect key="frame" x="0.0" y="471" width="600" height="129"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hXn-6Z-lOY">
                                         <rect key="frame" x="75" y="20" width="50" height="50"/>
@@ -655,8 +655,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="200" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" misplaced="YES" image="defaultKeyImage" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
-                                <rect key="frame" x="239" y="163" width="123" height="123"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="200" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="defaultKeyImage" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
+                                <rect key="frame" x="150" y="163" width="300" height="300"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vg2-Ns-08y" secondAttribute="height" id="EPD-m8-HlP"/>
                                     <constraint firstAttribute="width" constant="180" id="QL1-X6-dPh"/>
