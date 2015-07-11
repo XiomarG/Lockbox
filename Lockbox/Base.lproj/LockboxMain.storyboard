@@ -487,7 +487,7 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xuW-sj-56q">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xuW-sj-56q">
                                 <rect key="frame" x="0.0" y="294" width="600" height="306"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hXn-6Z-lOY">
@@ -617,6 +617,11 @@
                                     <constraint firstItem="LTs-yh-E7X" firstAttribute="centerY" secondItem="hXn-6Z-lOY" secondAttribute="centerY" id="yN2-PF-YYN"/>
                                     <constraint firstItem="nLn-mt-g4P" firstAttribute="leading" secondItem="ENg-Ib-c54" secondAttribute="trailing" constant="8" symbolic="YES" id="ywt-Hr-s23"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NgQ-kZ-Azr"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="wk3-NA-9Gy">
                                 <rect key="frame" x="16" y="94" width="569" height="29"/>
@@ -650,7 +655,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" image="defaultKeyImage" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="200" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" misplaced="YES" image="defaultKeyImage" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-Ns-08y">
                                 <rect key="frame" x="239" y="163" width="123" height="123"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Vg2-Ns-08y" secondAttribute="height" id="EPD-m8-HlP"/>

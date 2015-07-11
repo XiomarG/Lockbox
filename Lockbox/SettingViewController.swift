@@ -42,12 +42,6 @@ class SettingViewController: UIViewController {
         self.view.bringSubviewToFront(setPassword)
         //self.navigationController?.navigationBar.topItem?.title = "Cancel"
         addCollectionView()
-        
-        // debug for setPassword untouchable in 3.5" screen
-        
-        println(self.view.frame)
-        println(self.view.bounds)
-        println(self.setPassword.frame)
     }
     func loadCandidates() {
         var firstItem = backgroundImages.first

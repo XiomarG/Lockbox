@@ -33,6 +33,9 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     var controllerType : pwControllerType?
     
     var keyboardHeight : CGFloat?
+    var viewHeightConstraint : NSLayoutConstraint?
+    var defaultBackViewConstraint : NSLayoutConstraint?
+    
     
     let keychain = Keychain()
 
@@ -68,16 +71,35 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
     }
 
     
+    private func updateViewForKeyboard() {
+        viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
+        inputBackgroundView.removeConstraint(defaultBackViewConstraint!)
+        inputBackgroundView.addConstraint(viewHeightConstraint!)
+        self.logoImage.layer.cornerRadius = self.logoImage.layer.bounds.width / CGFloat(8.0)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "keyboardShown:", object: nil)
+        NSUserDefaults.standardUserDefaults().setObject(keyboardHeight, forKey: "saved keyboard height")
+    }
+
+    
     private func setView() {
+        keyboardHeight = NSUserDefaults.standardUserDefaults().objectForKey("saved keyboard height") as? CGFloat
+        if keyboardHeight != nil {
+            defaultBackViewConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
+            inputBackgroundView.addConstraint(defaultBackViewConstraint!)
+        } else {
+            defaultBackViewConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: 316)
+            inputBackgroundView.addConstraint(defaultBackViewConstraint!)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShown:", name: UIKeyboardDidShowNotification, object: nil)
+        }
+        
+        input1.becomeFirstResponder()
         
         self.thePassword = self.keychain[string: Constants.APP_PASSWORD]
         self.notificationLabel.text = ""
         self.textFields = [input1, input2, input3, input4]
-        // Do any additional setup after loading the view.
         for index in 0 ... 3 {
             textFields[index].delegate = self
             textFields[index].secureTextEntry = true
-            //textFields[index].tag = Int(index)
             textFields[index].keyboardType = UIKeyboardType.Default
             observePasswordInputs(textFields[index], index: index, textFields: textFields)
         }
@@ -86,15 +108,19 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         self.setNotificationLabel()
         self.minorNotificationLabel.text = ""
         self.logoImage.layer.masksToBounds = true
-        self.logoImage.layer.cornerRadius = self.logoImage.bounds.width / CGFloat(8.0)
-        input1.becomeFirstResponder()
+        self.logoImage.layer.cornerRadius = CGFloat(10.0)
+    }
+    
+    func keyboardShown(notification: NSNotification) {
+        let info  = notification.userInfo!
+        let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
 
+        let rawFrame = value.CGRectValue()
+        let keyboardFrame = view.convertRect(rawFrame, fromView: nil)
+        keyboardHeight = keyboardFrame.height
+        updateViewForKeyboard()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     // MARK: Text Filed Delegate
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         if range.length + range.location > count(textField.text)
