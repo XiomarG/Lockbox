@@ -22,6 +22,8 @@ class boxInfoViewCell: UITableViewCell, UITextFieldDelegate {
         accountInfo.delegate = self
         passwordInfo.delegate = self
         self.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        accountInfo.clearButtonMode = UITextFieldViewMode.WhileEditing
+        passwordInfo.clearButtonMode = UITextFieldViewMode.WhileEditing
     }
     
 //    deinit{

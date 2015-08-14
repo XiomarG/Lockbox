@@ -18,8 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         backgroundImageIndex = NSUserDefaults.standardUserDefaults().integerForKey("Background Image Index")
         var index = 0
         while UIImage(named: "background\(index)") != nil {
-            backgroundImages.append(UIImage(named: "background\(index++)"))
+            backgroundImages.append(UIImage(named: "background\(index++)")) // load all background images
         }
+        ////////////  load root view controller    /////
+        let mainStoryboard = UIStoryboard(name: "LockboxMain", bundle: nil)
+        var rootViewController = mainStoryboard.instantiateViewControllerWithIdentifier("rootViewController") as! UINavigationController
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = rootViewController
+        self.window?.makeKeyAndVisible()
+        ////////////  load password view when launched  ////////
+
+        
         return true
     }
 
@@ -27,10 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         if let hasPassword = NSUserDefaults.standardUserDefaults().objectForKey("has password") as? Bool {
-            let topController = topMostViewController()
-            let passwordViewController = topController.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
-            passwordViewController?.controllerType = .checkPW
-            topController.presentViewController(passwordViewController!, animated: true, completion: nil)
+            if isPasswordView == false {
+                let topController = topMostViewController()
+                let passwordViewController = topController.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
+                passwordViewController?.controllerType = .checkPW
+                topController.presentViewController(passwordViewController!, animated: true, completion: nil)
+            }
         }
     }
     func topMostViewController() -> UIViewController {

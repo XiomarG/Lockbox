@@ -76,6 +76,7 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
         }
         appName.autocorrectionType = UITextAutocorrectionType.No
         appName.delegate = self
+        appName.clearButtonMode = UITextFieldViewMode.WhileEditing
         // set button to round corner
         self.setImageButton.layer.masksToBounds = true
         self.setImageButton.layer.cornerRadius = self.setImageButton.bounds.width / CGFloat(8.0)
@@ -175,8 +176,10 @@ class boxInfoTableViewController: UITableViewController, UITextFieldDelegate, UI
     @IBAction func addAccount(sender: UIButton) {
         self.resignFirstResponder()
         accounts.append(Account(name:"", password: ""))
-        tableView.reloadData()
         isNewAccountTrigger = true
+        tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: accounts.count-1, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Middle)
+//        tableView.reloadSections(nsind, withRowAnimation: UITableViewRowAnimation.Fade)
+        
     }
 
     @IBAction func deleteApp(sender: AnyObject) {

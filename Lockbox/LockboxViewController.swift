@@ -36,6 +36,10 @@ class LockboxViewController: UICollectionViewController {
             initializeTestData()
             addEmptyBox()
         }
+//        if isFirstLaunch {
+//            loadPassworkd()
+//            isFirstLaunch = false
+//        }
 
     }
     override func viewWillAppear(animated: Bool) {
@@ -43,6 +47,7 @@ class LockboxViewController: UICollectionViewController {
         self.loadDataFromFile()
         self.collectionView?.reloadData()
         collectionView!.backgroundView = UIImageView(image: backgroundImages[backgroundImageIndex])
+
     }
     override func viewDidAppear(animated: Bool) {
         if isFirstLaunch {
@@ -52,9 +57,12 @@ class LockboxViewController: UICollectionViewController {
     }
     func loadPassworkd() {
         if let hasPassword = NSUserDefaults.standardUserDefaults().objectForKey("has password") as? Bool  {
-            let passwordViewController = self.storyboard?.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
+            let mainStoryboard = UIStoryboard(name: "LockboxMain", bundle: nil)
+            
+            let passwordViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Password") as? PasswordViewController
             passwordViewController?.controllerType = .checkPW
-            self.view.window!.rootViewController!.presentViewController(passwordViewController!, animated: true, completion: nil)
+//            passwordViewController?.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+            self.presentViewController(passwordViewController!, animated: true, completion: nil)
         }
     }
 

@@ -13,6 +13,8 @@ var backgroundImageIndex = 0
 //var backgroundImages = [UIImage(named: "background0"), UIImage(named: "background1"),UIImage(named: "background2"), UIImage(named: "background3"), UIImage(named: "background4"),nil]
 var backgroundImages = [UIImage?]()
 
+var isPasswordView = false
+
 
 
 extension UIButton {

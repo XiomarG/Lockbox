@@ -9,37 +9,38 @@
 import UIKit
 import KeychainAccess
 
-class PasswordViewController: UIViewController , UITextFieldDelegate {
 
+class PasswordViewController: UIViewController , UITextFieldDelegate {
+    
     @IBOutlet weak var input1: UITextField!
-    @IBOutlet weak var input2: UITextField!
-    @IBOutlet weak var input3: UITextField!
-    @IBOutlet weak var input4: UITextField!
+    @IBOutlet weak var input2: myTextField!
+    @IBOutlet weak var input3: myTextField!
+    @IBOutlet weak var input4: myTextField!
     @IBOutlet weak var logoImage: UIImageView!
-    
+
     @IBOutlet weak var notificationLabel: UILabel!
-    
+
     @IBOutlet weak var minorNotificationLabel: UILabel!
-    
+
     @IBOutlet weak var inputBackgroundView: UIView!
-    
+
     var backImageView = UIImageView()
-    
+
     var thePassword : String?
-    
+
     var tempPassword = ""
-    
+
     var textFields = [UITextField]()
     var controllerType : pwControllerType?
-    
+
     var keyboardHeight : CGFloat?
     var viewHeightConstraint : NSLayoutConstraint?
     var defaultBackViewConstraint : NSLayoutConstraint?
-    
-    
+
+
     let keychain = Keychain()
 
-    
+
     enum pwControllerType {
         case changePW
         case setPW
@@ -47,7 +48,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         case checkPW
         case removePW
     }
-    
+        
     private func setNotificationLabel() {
         if self.controllerType != nil {
             switch self.controllerType! {
@@ -62,15 +63,23 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
             }
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initBackImageView(backImageView)
         self.loadBackImageView(backImageView)
         setView()
+        if self.controllerType == .checkPW {
+            isPasswordView = true
+        }
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "detectDeleteBackward", name: "DeleteNotification", object: nil)
     }
 
-    
+
+
     private func updateViewForKeyboard() {
         viewHeightConstraint = NSLayoutConstraint(item: self.inputBackgroundView, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1, constant: keyboardHeight!+100)
         inputBackgroundView.removeConstraint(defaultBackViewConstraint!)
@@ -80,7 +89,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         NSUserDefaults.standardUserDefaults().setObject(keyboardHeight, forKey: "saved keyboard height")
     }
 
-    
+
     private func setView() {
         keyboardHeight = NSUserDefaults.standardUserDefaults().objectForKey("saved keyboard height") as? CGFloat
         if keyboardHeight != nil {
@@ -110,7 +119,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         self.logoImage.layer.masksToBounds = true
         self.logoImage.layer.cornerRadius = CGFloat(10.0)
     }
-    
+
     func keyboardShown(notification: NSNotification) {
         let info  = notification.userInfo!
         let value: AnyObject = info[UIKeyboardFrameEndUserInfoKey]!
@@ -129,8 +138,8 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         if newLength > 1  { return false }
         return newLength  <= 1
     }
-    
-    
+
+
     func observePasswordInputs(theTextfield : UITextField!, index : Int, textFields: [UITextField!]) {
         let center = NSNotificationCenter.defaultCenter()
         let queue = NSOperationQueue.mainQueue()
@@ -150,6 +159,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                         if self.comparePassword(self.thePassword!) == true {
                             theTextfield.resignFirstResponder()
                             self.dismissViewControllerAnimated(true, completion: nil)
+                            isPasswordView = false
                         } else {
                             self.notificationLabel.text = "Password Incorrect"
                             self.minorNotificationLabel.text = "Please Input Again"
@@ -227,7 +237,7 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
                 }
         }
     }
-    
+
     func comparePassword(password : String ) -> Bool {
         var inputPassword = ""
         for index in 0 ... 3 {
@@ -237,5 +247,22 @@ class PasswordViewController: UIViewController , UITextFieldDelegate {
         if inputPassword != password  { return false }
         return true
     }
+    func detectDeleteBackward() {
+        for index in 1...3 {
+            if textFields[index].isFirstResponder() {
+                textFields[index-1].text = ""
+                textFields[index-1].becomeFirstResponder()
+                break
+            }
+        }
+    }
+}
 
+class myTextField : UITextField {
+    var vc : UIViewController?
+    override func deleteBackward() {
+        super.deleteBackward()
+//        globalDeleteBackward = !globalDeleteBackward
+        NSNotificationCenter.defaultCenter().postNotificationName("DeleteNotification", object: nil)
+    }
 }
